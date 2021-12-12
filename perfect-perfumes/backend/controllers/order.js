@@ -24,11 +24,13 @@ module.exports = {
 
   create: (req, res) => {
     let order = new Order({
-      refId: Math.floor(Math.random() * 10000000 + 1),
+      // refId: Math.floor(Math.random() * 10000000 + 1),
       items: req.body.items,
       total: req.body.total,
       userId: req.body.userId,
     });
+    console.log(order);
+
     order.save((error) => {
       if (error) res.json({ erorr: erorr });
       else res.json({ message: "Order is inserted" });

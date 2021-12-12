@@ -1,10 +1,15 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
+import { Carousel, Button } from "react-bootstrap";
 import { CardGroup, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import img1 from "../imgs/prands.png";
 import Footer from "./Footer";
+import img1 from "../imgs/val.jpeg";
+import img2 from "../imgs/dior.png";
+import img3 from "../imgs/uomo.jpeg";
+import img4 from "../imgs/prands.png";
 
 function Home() {
   const [bestSiller, setbestSiller] = useState([]);
@@ -20,6 +25,20 @@ function Home() {
   let arr = [];
   return (
     <div>
+      <div>
+        <Carousel fade>
+          <Carousel.Item>
+            <img className="d-block w-100" src={img1} alt="First slide" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src={img2} alt="Second slide" />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img className="d-block w-100" src={img3} alt="Third slide" />
+          </Carousel.Item>
+        </Carousel>
+      </div>
+
       <div className="header-title2">
         <h3 className="header-text-title2">Best Siller</h3>
       </div>
@@ -44,6 +63,7 @@ function Home() {
                     <Card.Text style={{ textAlign: "center" }}>
                       Price: {item.price} SRA
                     </Card.Text>
+                    <Button id="loginbtn">Add To Cart</Button>
                   </Card.Body>
                 </CardGroup>
               );
@@ -53,9 +73,9 @@ function Home() {
       </div>
 
       <div className="header-title2">
-        <h5 className="header-text-title2">BRANDS YOU LOVE</h5>
+        <h3 className="header-text-title2">BRANDS YOU LOVE</h3>
 
-        <img className="prands-img" src={img1} />
+        <img className="prands-img" src={img4} />
       </div>
       <Footer />
     </div>
