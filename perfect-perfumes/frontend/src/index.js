@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import NavBar from "./component/NavBar";
+import NavBar from "./component/userView/NavBar";
 
 ReactDOM.render(
   <React.StrictMode>
