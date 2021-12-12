@@ -16,10 +16,7 @@ function Footer() {
                 satisfy your needs in most unrivaled ways. Offering you with the
                 most exclusive fragrances from top brands such as Yves Saint
                 Laurent, Dior, Giorgio Armani, Gucci, Dolce & Gabbana, Carolina
-                Herrera and Robert Cavalli. We offer you with one of the most
-                generous loyalty programs in the region, as well as a wide array
-                of bespoke and inclusive experiences and offers, as well as
-                inspiring beauty trends. We seek to leave you with an
+                Herrera and Robert Cavalli. We seek to leave you with an
                 unforgettable experience while being emotionally connected in
                 every beautiful moment. More than ever, Beauty is about
                 self-expression, embracing diversity and experimentation. We
