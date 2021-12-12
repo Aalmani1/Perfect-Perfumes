@@ -53,6 +53,7 @@ module.exports = {
 
   create: (req, res) => {
     let admin = new Admin({
+      refId: Math.floor(Math.random() * 100000 + 1),
       email: req.body.email,
       password: req.body.password,
       phoneNumber: req.body.phoneNumber,

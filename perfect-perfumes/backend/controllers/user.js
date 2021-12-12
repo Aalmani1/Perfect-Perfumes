@@ -54,6 +54,7 @@ module.exports = {
 
   create: (req, res) => {
     let user = new User({
+      refId: Math.floor(Math.random() * 100000 + 1),
       email: req.body.email,
       password: req.body.password,
       phoneNumber: req.body.phoneNumber,

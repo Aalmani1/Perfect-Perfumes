@@ -24,6 +24,7 @@ module.exports = {
 
   create: (req, res) => {
     let order = new Order({
+      refId: Math.floor(Math.random() * 10000000 + 1),
       items: req.body.items,
       total: req.body.total,
       userId: req.body.userId,

@@ -55,6 +55,7 @@ module.exports = {
 
   create: (req, res) => {
     let product = new Product({
+      refId: Math.floor(Math.random() * 10000 + 1),
       brand: req.body.brand,
       name: req.body.name,
       description: req.body.description,

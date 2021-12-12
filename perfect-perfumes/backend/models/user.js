@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 
 const usertSchema = new mongoose.Schema({
+  refId: {
+    type: Number,
+    trim: true,
+    required: true,
+    unique: true,
+  },
   email: {
     type: String,
     trim: true,
