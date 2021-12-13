@@ -8,13 +8,13 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 <hr>
 
-#### Wireframe:
+### Wireframe:
 
-##### Figma:
+#### Figma:
 
 <a href="https://www.figma.com/file/CgWmU1Z4ylWB97CL2PTSQE/Untitled?node-id=1%3A2">Click Here </a>
 
-##### Trello:
+#### Trello:
 
 <a href="https://trello.com/b/HkpSwwEY/perfect-perfumes">Click Here</a>
 
