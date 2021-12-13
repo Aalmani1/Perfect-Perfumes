@@ -8,8 +8,24 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 <a href="https://www.figma.com/file/CgWmU1Z4ylWB97CL2PTSQE/Untitled?node-id=1%3A2">Click Here </a>
 
+#### Trello:
+
+<a href="https://trello.com/b/HkpSwwEY/perfect-perfumes">Click Here</a>
+
 ## User Stories
 
-- **Signup:** As a user I can sign up in the platform so that I can start playing into competition
-- **Login:** As a user I can login to the platform so that I can log my exit points
-- **Logout:** As a user I can logout from the platform so no one else can use it
+**User**
+
+<li>As a user I can create account. </li>
+<li>As a user I can signin.</li>
+<li>As a user I can add product to cart.</li>
+<li>As a user I can update my cart delete items or change quantity.</li>
+<li>As a user I can pay products.</li>
+<li>As a user I can contact with stor if i have any suggestion or issue.</li>
+
+**Admin**
+
+<li>As a admin I can add , delete , update products.</li>
+<li>As a admin I can update users information</li>
+<li>As a admin I can show orders</li>
+<li>As a admin I can update and delete orders</li>
