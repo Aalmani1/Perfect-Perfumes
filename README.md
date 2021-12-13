@@ -12,7 +12,7 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 #### Figma:
 
-<a href="https://www.figma.com/file/CgWmU1Z4ylWB97CL2PTSQE/Untitled?node-id=1%3A2">Click Here </a>
+<a href="https://www.figma.com/file/CgWmU1Z4ylWB97CL2PTSQE/Untitled?node-id=10%3A753">Click Here </a>
 
 #### Trello:
 
