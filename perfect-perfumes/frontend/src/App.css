@@ -63,6 +63,10 @@ li a:hover:not(.active) {
   margin-left: 23%;
 }
 
+.admin-title {
+  text-align: center;
+}
+
 .navbar1 {
   border-style: solid none solid none;
   border-width: 0.1px;
@@ -74,6 +78,9 @@ li a:hover:not(.active) {
 }
 .mainNav1 {
   padding-left: 26%;
+}
+.adminNav1 {
+  margin-left: 2%;
 }
 
 .best-siller-card {
@@ -114,6 +121,58 @@ Button[type="submit"],
   background-color: #720875;
 }
 
+.div-cart {
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: 3%;
+}
+
+tr {
+  text-align: center;
+}
+.AdminAddItem {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 3%;
+  padding-bottom: 5%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr, 1fr, 1fr, 1fr;
+  /* grid-template-rows: 1fr; */
+}
+
+.display-img {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.display-content {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  margin-top: 12%;
+}
+
+.shop-col1 {
+  margin-top: 40%;
+
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.shop-col2 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.imd-display {
+  height: 70%;
+}
+
+.imghome {
+  margin-left: 10%;
+}
 /* =================================================== */
 
 .App {
@@ -129,6 +188,10 @@ Button[type="submit"],
   padding-top: 3%;
   padding-left: 15%;
   padding-right: 15%;
+}
+
+.filter {
+  background-color: #c5269d;
 }
 
 @media (prefers-reduced-motion: no-preference) {

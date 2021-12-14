@@ -35,7 +35,9 @@ module.exports = {
     };
     Product.findByIdAndUpdate(productId, { $set: productInfo })
       .then((user) => {
-        res.json({ message: "Product information has been updated" });
+        Product.find({}).then((allproduct) => {
+          res.json(allproduct);
+        });
       })
       .catch((error) => {
         res.json({ error: erorr });
@@ -46,7 +48,9 @@ module.exports = {
     let productId = req.params.productid;
     Product.findByIdAndRemove(productId)
       .then(() => {
-        res.json({ message: "Product is deleted" });
+        Product.find({}).then((allproduct) => {
+          res.json(allproduct);
+        });
       })
       .catch((error) => {
         res.json({ error: erorr });
@@ -66,7 +70,10 @@ module.exports = {
     });
     product.save((error) => {
       if (error) res.json({ erorr: erorr });
-      else res.json({ message: "Product is inserted" });
+      else
+        Product.find({}).then((allproduct) => {
+          res.json(allproduct);
+        });
     });
   },
 };

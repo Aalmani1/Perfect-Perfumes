@@ -8,7 +8,8 @@ import Login from "./Login";
 import CreateAccount from "./CreateAccount";
 import Contactus from "./Contactus";
 import Cart from "./Cart";
-
+import Display from "./Display";
+import ErrorPage from "./ErorrPage";
 function NavBar() {
   return (
     <div>
@@ -60,6 +61,8 @@ function NavBar() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/createaccount" element={<CreateAccount />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/display/:id" element={<Display />}></Route>
+          <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

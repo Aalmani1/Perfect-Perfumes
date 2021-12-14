@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import { Carousel, Button } from "react-bootstrap";
 import { CardGroup, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import img1 from "../imgs/val.jpeg";
 import img2 from "../imgs/dior.png";
@@ -50,12 +51,15 @@ function Home() {
             if (arr.length < 7) {
               return (
                 <CardGroup className="CardGroup">
-                  <Card.Img
-                    variant="top"
-                    src={item.img}
-                    height="310px"
-                    width="330px"
-                  />
+                  <Link to={"/display/" + item._id}>
+                    <Card.Img
+                      className="imghome"
+                      variant="top"
+                      src={item.img}
+                      height="320px"
+                      width="340px"
+                    />
+                  </Link>
                   <Card.Body>
                     <Card.Title>
                       <h6 style={{ textAlign: "center" }}>{item.name}</h6>
