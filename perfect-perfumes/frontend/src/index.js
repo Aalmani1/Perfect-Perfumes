@@ -8,7 +8,7 @@ import AdminNavBar from "./component/adminView/AdminNavBar";
 
 ReactDOM.render(
   <React.StrictMode>
-    <NavBar />
+    <AdminNavBar />
   </React.StrictMode>,
   document.getElementById("root")
 );
