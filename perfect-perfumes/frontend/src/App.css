@@ -100,7 +100,8 @@ li a:hover:not(.active) {
 
 .login-img {
   position: absolute;
-  height: 80%;
+  margin-top: -1%;
+  height: 81%;
   width: 100%;
 }
 
@@ -141,6 +142,11 @@ tr {
   display: grid;
   grid-template-columns: 1fr, 1fr, 1fr, 1fr;
   /* grid-template-rows: 1fr; */
+}
+
+.blog-container {
+  display: grid;
+  grid-template-columns: 1fr, 1fr, 1fr, 1fr;
 }
 
 .display-img {
@@ -215,6 +221,12 @@ tr {
   margin: -160px;
   width: 110%;
   height: 82%;
+  position: absolute;
+}
+.blogImg {
+  margin: -10%;
+  width: 110%;
+  height: 55%;
   position: absolute;
 }
 /* =================================================== */
