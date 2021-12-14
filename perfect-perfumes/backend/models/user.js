@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const usertSchema = new mongoose.Schema({
   refId: {
@@ -33,6 +34,7 @@ const usertSchema = new mongoose.Schema({
     trim: true,
     required: true,
   },
+  cart: { type: Schema.Types.ObjectId, ref: "cart" },
 });
 
 module.exports = mongoose.model("user", usertSchema);
