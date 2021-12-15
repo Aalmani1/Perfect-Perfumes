@@ -57,37 +57,97 @@ module.exports = {
           .populate("cart")
           .then((openCart) => {
             console.log(openCart);
-            Cart.findByIdAndUpdate(user.cart, {
-              $push: {
+            let item = openCart.cart.cart.find(
+              (it) => it.items == req.body.item
+            );
+            if (openCart.cart.cart.includes(item)) {
+              console.log("includes");
+
+              let cartId = user.cart;
+              let cartQuantity = {
                 cart: {
                   items: req.body.item,
-                  subtotal: product.price * req.body.quantity,
-                  quantity: req.body.quantity,
+                  subtotal: product.price * (item.quantity + req.body.quantity),
+                  quantity: item.quantity + req.body.quantity,
                 },
-              },
-              total: openCart.cart.total + product.price * req.body.quantity,
-            }).then((cart) => {
-              User.findByIdAndUpdate(req.body.id, {
-                cart: cart,
-              }).then(async (user) => {
-                await user.save();
-                res.send(user);
+                total: openCart.cart.total + product.price * req.body.quantity,
+              };
+              Cart.findByIdAndUpdate(cartId, { $set: cartQuantity })
+                .then((user) => {
+                  res.json({ message: "Cart information has been updated" });
+                })
+                .catch((error) => {
+                  res.json({ error: erorr });
+                });
+            } else {
+              console.log("not includes");
+
+              //   Cart.findByIdAndUpdate(user.cart, {
+              //     cart: {
+              //       subtotal: product.price * (item.quantity + req.body.quantity),
+              //       quantity: item.quantity + req.body.quantity,
+              //     },
+
+              //     total:
+              //       openCart.cart.total +
+              //       product.price * (item.quantity + req.body.quantity),
+              //   }).then((cart) => {
+
+              //   });
+              Cart.findByIdAndUpdate(user.cart, {
+                $push: {
+                  cart: {
+                    items: req.body.item,
+                    subtotal: product.price * req.body.quantity,
+                    quantity: req.body.quantity,
+                  },
+                },
+                total: openCart.cart.total + product.price * req.body.quantity,
+              }).then((cart) => {
+                User.findByIdAndUpdate(req.body.id, {
+                  cart: cart,
+                }).then(async (user) => {
+                  await user.save();
+                  res.send(user);
+                });
               });
-            });
+            }
           });
       }
     });
   },
 
   delete: (req, res) => {
-    let cartId = req.params.orderid;
-    Cart.findByIdAndRemove(cartId)
-      .then(() => {
-        res.json({ message: "Cart is deleted" });
-      })
-      .catch((error) => {
-        res.json({ error: error });
+    User.findById({ _id: req.body.userId }).then((user) => {
+      Cart.findByIdAndUpdate(
+        { _id: user.cart },
+        {
+          $pull: {
+            cart: {
+              items: req.body.itemsId,
+            },
+          },
+        }
+      ).then((cart) => {
+        console.log(cart.cart);
+        let subtotal;
+        cart.cart.forEach((element) => {
+          if (element.items == req.body.itemsId) {
+            console.log(element.subtotal);
+            subtotal = element.subtotal;
+          }
+        });
+        Cart.findByIdAndUpdate(
+          { _id: user.cart },
+          {
+            total: cart.total - subtotal,
+          }
+        ).then((newCart) => {
+          newCart.save();
+          res.send(newCart);
+        });
       });
+    });
   },
 
   update: (req, res) => {
