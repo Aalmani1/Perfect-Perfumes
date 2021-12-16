@@ -1,5 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import img1 from "../imgs/imglogin.png";
+import Footer from "./Footer";
 
 function Contactus() {
   return (

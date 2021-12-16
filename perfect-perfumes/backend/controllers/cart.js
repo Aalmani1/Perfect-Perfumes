@@ -18,7 +18,7 @@ module.exports = {
   },
 
   show: (req, res) => {
-    User.findById({ _id: req.body.id })
+    User.findById({ _id: req.params.id })
       .then((user) => {
         Cart.findById({ _id: user.cart })
           .populate("cart.items")
@@ -77,23 +77,11 @@ module.exports = {
                   res.json({ message: "Cart information has been updated" });
                 })
                 .catch((error) => {
-                  res.json({ error: erorr });
+                  res.json({ error: error });
                 });
             } else {
               console.log("not includes");
 
-              //   Cart.findByIdAndUpdate(user.cart, {
-              //     cart: {
-              //       subtotal: product.price * (item.quantity + req.body.quantity),
-              //       quantity: item.quantity + req.body.quantity,
-              //     },
-
-              //     total:
-              //       openCart.cart.total +
-              //       product.price * (item.quantity + req.body.quantity),
-              //   }).then((cart) => {
-
-              //   });
               Cart.findByIdAndUpdate(user.cart, {
                 $push: {
                   cart: {

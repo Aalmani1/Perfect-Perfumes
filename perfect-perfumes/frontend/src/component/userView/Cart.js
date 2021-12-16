@@ -1,16 +1,43 @@
 import Footer from "./Footer";
+import { useState, useEffect } from "react";
+import axios from "axios";
 function Cart() {
+  const [cartItems, setCartItems] = useState([]);
+  const [load, setLoad] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/carts/show/61b59f0d27082b119a0c9b7e")
+      .then((res) => {
+        console.log(res.data.cart);
+        setCartItems(res.data.cart);
+        setLoad(false);
+      });
+    console.log(cartItems);
+  }, []);
+
+  if (load) {
+    return <p>loading ......</p>;
+  }
   return (
     <div>
       <div style={{ marginTop: "3%", textAlign: "center" }}>
         <div className="container">
-          <div className="col1">
-            <h6>Products</h6>
-            <hr></hr>
-            <div>
-              <h5>test</h5>
-            </div>
-          </div>
+          {cartItems.map((item) => {
+            {
+              console.log("item= ", item);
+            }
+            return (
+              <div className="col1">
+                <h6>Products</h6>
+                <hr></hr>
+                <div>
+                  <h5>{item.items.name}</h5>
+                </div>
+              </div>
+            );
+          })}
+
           <div className="col2">
             <h6>Price</h6>
             <hr></hr>
@@ -60,23 +87,3 @@ function Cart() {
 }
 
 export default Cart;
-
-// <div class="div-cart">
-// <table style={{ width: "100%" }}>
-//   <tr>
-//     <th>
-//       Item <hr></hr>
-//     </th>
-
-//     <th>
-//       Price <hr></hr>
-//     </th>
-//     <th>
-//       Quantity <hr></hr>
-//     </th>
-//     <th>
-//       Total <hr></hr>
-//     </th>
-//   </tr>
-// </table>
-// </div>

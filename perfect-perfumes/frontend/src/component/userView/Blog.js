@@ -67,7 +67,8 @@ const Blog = () => {
                   The beloved narciso rodriguez for her is now intensified in
                   the new for her MUSC NOIR For her MUSC NOIR wraps the
                   original’s unique Chypre Musk blend in further mystery with a
-                  Plum invitation...
+                  Plum invitation For her MUSC NOIR wraps the original’s unique
+                  Chypre Musk...
                 </Card.Text>
                 <Button id="loginbtn">Reade More</Button>
               </Card.Body>

@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 function Shop() {
   const [product, setproduct] = useState([]);
+  const [addItem, setAddItem] = useState([]);
 
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((res) => {
@@ -16,12 +17,56 @@ function Shop() {
     console.log(product);
   }, []);
 
+  const priceTest = () => {};
+
+  const genderTest = (gender) => {
+    //function for male
+    // if (gender == "male") {
+    let items = [];
+    for (let i = 0; i < product.length; i++) {
+      if (product[i].gender == "male") {
+        items.push(product[i]);
+        console.log(product[i]);
+        setproduct(items);
+      }
+    }
+    // }
+    //function for femail
+    // if (gender == "female") {
+    // for (let i = 0; i < product.length; i++) {
+    //   if (product[i].gender == "female") {
+    //     console.log(product[i]);
+    //   }
+    // }
+    // }
+  };
+
   const addToCart = (item) => {
-    // alert("Add Saccfully");
+    // e.preventDefault();
+    let items = item._id;
+    let quantity = 1;
+    console.log(items);
+    axios
+      .post("http://localhost:3001/carts/create", {
+        item: items,
+        quantity: quantity,
+        id: "61b59f2327082b119a0c9b81",
+      })
+      .then((res) => {
+        console.log("add saccfully" + res);
+        setAddItem([...addItem, res.data]);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    console.log(addItem);
+    alert("Add Saccfully");
   };
 
   return (
     <div>
+      <button onClick={genderTest}> Test Gender </button>
+      <button onClick={priceTest}> Test price </button>
       <div className="container">
         <div className="shop-col1">
           <h5>FILTERS:</h5>
@@ -37,6 +82,7 @@ function Shop() {
             />
 
             <Dropdown.Menu>
+              <Dropdown.Item href="#/action-2">Select All</Dropdown.Item>
               <Dropdown.Item href="#/action-2">Femail</Dropdown.Item>
               <Dropdown.Item href="#/action-3">Male</Dropdown.Item>
             </Dropdown.Menu>
@@ -81,7 +127,13 @@ function Shop() {
                       <h5 class="card-title">{item.name}</h5>
                       <small class="text-muted">Price : {item.price}</small>
                     </div>
-                    <Button onClick={addToCart(item)} id="loginbtn">
+
+                    <Button
+                      onClick={() => {
+                        addToCart(item);
+                      }}
+                      id="loginbtn"
+                    >
                       Add To Cart
                     </Button>
                   </div>
