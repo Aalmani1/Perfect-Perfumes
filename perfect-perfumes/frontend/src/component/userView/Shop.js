@@ -8,37 +8,41 @@ import { Link } from "react-router-dom";
 function Shop() {
   const [product, setproduct] = useState([]);
   const [addItem, setAddItem] = useState([]);
+  const [items, setItems] = useState(product);
 
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setproduct(res.data);
+      setItems(res.data);
     });
-    console.log(product);
+    // console.log(product);
   }, []);
 
-  const priceTest = () => {};
+  const selectPrice = (selectedPrice) => {
+    let item = [];
+    if (selectedPrice == "hightToLow") {
+      console.log("Clicked Hight to low");
+    } else {
+      console.log("Clicked low to high");
+    }
+  };
 
-  const genderTest = (gender) => {
-    //function for male
-    // if (gender == "male") {
-    let items = [];
+  const selectGender = (gender) => {
+    // console.log(gender);
+    let item = [];
+
     for (let i = 0; i < product.length; i++) {
-      if (product[i].gender == "male") {
-        items.push(product[i]);
-        console.log(product[i]);
-        setproduct(items);
+      if (product[i].gender == gender) {
+        item.push(product[i]);
+        setItems(item);
+      }
+      //function for view all
+      else if (gender == "") {
+        setItems(product);
+        // console.log("all items ", product);
       }
     }
-    // }
-    //function for femail
-    // if (gender == "female") {
-    // for (let i = 0; i < product.length; i++) {
-    //   if (product[i].gender == "female") {
-    //     console.log(product[i]);
-    //   }
-    // }
-    // }
   };
 
   const addToCart = (item) => {
@@ -50,7 +54,7 @@ function Shop() {
       .post("http://localhost:3001/carts/create", {
         item: items,
         quantity: quantity,
-        id: "61b59f2327082b119a0c9b81",
+        id: "61b59f0d27082b119a0c9b7e",
       })
       .then((res) => {
         console.log("add saccfully" + res);
@@ -65,8 +69,20 @@ function Shop() {
 
   return (
     <div>
-      <button onClick={genderTest}> Test Gender </button>
-      <button onClick={priceTest}> Test price </button>
+      <button
+        onClick={() => {
+          selectPrice("hightToLow");
+        }}
+      >
+        price hight to low
+      </button>
+      <button
+        onClick={() => {
+          selectPrice("lowToHigh");
+        }}
+      >
+        price low to high
+      </button>
       <div className="container">
         <div className="shop-col1">
           <h5>FILTERS:</h5>
@@ -82,9 +98,27 @@ function Shop() {
             />
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-2">Select All</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Femail</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Male</Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  selectGender("");
+                }}
+              >
+                Select All
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  selectGender("female");
+                }}
+              >
+                Femail
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  selectGender("male");
+                }}
+              >
+                Male
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
 
@@ -115,7 +149,7 @@ function Shop() {
             class="row row-cols-1 row-cols-md-3 g-4"
             style={{ margin: " 3%" }}
           >
-            {product.map((item) => {
+            {items.map((item) => {
               return (
                 <div class="col">
                   <div class="card h-100">

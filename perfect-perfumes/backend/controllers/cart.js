@@ -34,6 +34,7 @@ module.exports = {
   create: async (req, res) => {
     let product = await Product.findById({ _id: req.body.item });
 
+    console.log(product);
     User.findById({ _id: req.body.id }).then((user) => {
       if (user.cart == undefined) {
         Cart.create({
@@ -64,21 +65,65 @@ module.exports = {
               console.log("includes");
 
               let cartId = user.cart;
-              let cartQuantity = {
-                cart: {
-                  items: req.body.item,
-                  subtotal: product.price * (item.quantity + req.body.quantity),
-                  quantity: item.quantity + req.body.quantity,
+              // let cartQuantity = {
+              //   cart: {
+              //     items: req.body.item,
+              //     subtotal: product.price * (item.quantity + req.body.quantity),
+              //     quantity: item.quantity + req.body.quantity,
+              //   },
+              //   total: openCart.cart.total + product.price * req.body.quantity,
+              // };
+              // Cart.findByIdAndUpdate(cartId, { $set: cartQuantity })
+              //   .then((user) => {
+              //     res.json({ message: "Cart information has been updated" });
+              //   })
+              //   .catch((error) => {
+              //     res.json({ error: error });
+              //   });
+
+              // Cart.update(
+              //   { _id: cartId, "cart.items": req.body.item },
+              //   {
+              //     $set: {
+              //       "cart.$.items": req.body.item,
+              //       "cart.$.subtotal":
+              //         product.price * (item.quantity + req.body.quantity),
+              //       "cart.$.quantity": item.quantity + req.body.quantity,
+              //     },
+              //     total:
+              //       openCart.cart.total + product.price * req.body.quantity,
+              //   },
+              //   function (err, model) {
+              //     if (err) {
+              //       console.log(err);
+              //     }
+              //   }
+              // );
+
+              console.log("cart " + item._id);
+              Cart.update(
+                { _id: cartId, "cart.items": req.body.item },
+                {
+                  $inc: { "cart.$.quantity": req.body.quantity },
+                  $set: {
+                    "cart.$.items": req.body.item,
+                    "cart.$.subtotal":
+                      product.price * (item.quantity + req.body.quantity),
+                  },
+                  total:
+                    openCart.cart.total + product.price * req.body.quantity,
                 },
-                total: openCart.cart.total + product.price * req.body.quantity,
-              };
-              Cart.findByIdAndUpdate(cartId, { $set: cartQuantity })
-                .then((user) => {
-                  res.json({ message: "Cart information has been updated" });
-                })
-                .catch((error) => {
-                  res.json({ error: error });
-                });
+                function (err, model) {
+                  if (err) {
+                    console.log(err);
+                  }
+                }
+              );
+
+              // console.log(rrr);
+              Cart.findById({ _id: cartId }).then((newCart) => {
+                res.send(newCart);
+              });
             } else {
               console.log("not includes");
 
@@ -106,13 +151,13 @@ module.exports = {
   },
 
   delete: (req, res) => {
-    User.findById({ _id: req.body.userId }).then((user) => {
+    User.findById({ _id: req.params.userId }).then((user) => {
       Cart.findByIdAndUpdate(
         { _id: user.cart },
         {
           $pull: {
             cart: {
-              items: req.body.itemsId,
+              items: req.params.id,
             },
           },
         }
@@ -120,7 +165,7 @@ module.exports = {
         console.log(cart.cart);
         let subtotal;
         cart.cart.forEach((element) => {
-          if (element.items == req.body.itemsId) {
+          if (element.items == req.params.id) {
             console.log(element.subtotal);
             subtotal = element.subtotal;
           }
@@ -130,10 +175,25 @@ module.exports = {
           {
             total: cart.total - subtotal,
           }
-        ).then((newCart) => {
-          newCart.save();
-          res.send(newCart);
+        ).then(async (newCart) => {
+          Cart.findById({ _id: newCart._id })
+            .populate("cart.items")
+            .then(async (newww) => {
+              console.log(newCart);
+              await newCart.save();
+              console.log(newww);
+              res.send(newww);
+            });
         });
+        // then(async (newCart) => {
+        //   await newCart.save();
+        //   Cart.find({})
+        //   .populate("cart.items")
+        //   .then((cart) => {
+        //     res.send(cart);
+        //   });
+        //   res.send(newCart);
+        // });
       });
     });
   },
@@ -150,7 +210,7 @@ module.exports = {
         res.json({ message: "Cart information has been updated" });
       })
       .catch((error) => {
-        res.json({ error: erorr });
+        res.json({ error: error });
       });
   },
 };
