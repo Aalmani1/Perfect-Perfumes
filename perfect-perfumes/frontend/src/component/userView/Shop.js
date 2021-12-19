@@ -16,15 +16,34 @@ function Shop() {
       setproduct(res.data);
       setItems(res.data);
     });
-    // console.log(product);
+    // console.log("items from use efect ===>", items);
   }, []);
 
   const selectPrice = (selectedPrice) => {
     let item = [];
+
     if (selectedPrice == "hightToLow") {
       console.log("Clicked Hight to low");
-    } else {
+      let highestToLowest = items.sort(function (a, b) {
+        return b.price - a.price;
+      });
+      for (let i = 0; i < highestToLowest.length; i++) {
+        item.push(highestToLowest[i]);
+      }
+      setItems(item);
+      console.log("items from use highest To Low ===>", items);
+    } else if (selectedPrice == "lowToHigh") {
       console.log("Clicked low to high");
+      let lowestToHighest = items.sort(function (a, b) {
+        return a.price - b.price;
+      });
+      for (let i = 0; i < lowestToHighest.length; i++) {
+        item.push(lowestToHighest[i]);
+      }
+      setItems(item);
+      console.log("items from use low To Highe ===>", items);
+    } else {
+      setItems(product);
     }
   };
 
@@ -69,20 +88,6 @@ function Shop() {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          selectPrice("hightToLow");
-        }}
-      >
-        price hight to low
-      </button>
-      <button
-        onClick={() => {
-          selectPrice("lowToHigh");
-        }}
-      >
-        price low to high
-      </button>
       <div className="container">
         <div className="shop-col1">
           <h5>FILTERS:</h5>
@@ -135,10 +140,26 @@ function Shop() {
             />
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-2">
+              <Dropdown.Item
+                onClick={() => {
+                  selectPrice("");
+                }}
+              >
+                Select All
+              </Dropdown.Item>
+
+              <Dropdown.Item
+                onClick={() => {
+                  selectPrice("hightToLow");
+                }}
+              >
                 Price (High to Low)
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-3">
+              <Dropdown.Item
+                onClick={() => {
+                  selectPrice("lowToHigh");
+                }}
+              >
                 Price (Low to High)
               </Dropdown.Item>
             </Dropdown.Menu>
