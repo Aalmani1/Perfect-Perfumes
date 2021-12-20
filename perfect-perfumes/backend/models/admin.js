@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const adminSchema = new mongoose.Schema({
-  refId: {
-    type: Number,
-    trim: true,
-    required: true,
-    unique: true,
-  },
+  // refId: {
+  //   type: Number,
+  //   trim: true,
+  //   required: true,
+  //   unique: true,
+  // },
   email: {
     type: String,
     trim: true,

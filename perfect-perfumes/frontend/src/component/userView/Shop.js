@@ -9,12 +9,15 @@ function Shop() {
   const [product, setproduct] = useState([]);
   const [addItem, setAddItem] = useState([]);
   const [items, setItems] = useState(product);
+  const [allItems, setAllItems] = useState(product);
+  const userId = localStorage.getItem("id");
 
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((res) => {
       // console.log(res.data);
       setproduct(res.data);
       setItems(res.data);
+      setAllItems(res.data);
     });
     // console.log("items from use efect ===>", items);
   }, []);
@@ -24,6 +27,7 @@ function Shop() {
 
     if (selectedPrice == "hightToLow") {
       console.log("Clicked Hight to low");
+
       let highestToLowest = items.sort(function (a, b) {
         return b.price - a.price;
       });
@@ -31,7 +35,7 @@ function Shop() {
         item.push(highestToLowest[i]);
       }
       setItems(item);
-      console.log("items from use highest To Low ===>", items);
+      // console.log("items from use highest To Low ===>", items);
     } else if (selectedPrice == "lowToHigh") {
       console.log("Clicked low to high");
       let lowestToHighest = items.sort(function (a, b) {
@@ -42,7 +46,7 @@ function Shop() {
       }
       setItems(item);
       console.log("items from use low To Highe ===>", items);
-    } else {
+    } else if (selectedPrice == "") {
       setItems(product);
     }
   };
@@ -69,11 +73,12 @@ function Shop() {
     let items = item._id;
     let quantity = 1;
     console.log(items);
+    console.log(userId);
     axios
       .post("http://localhost:3001/carts/create", {
         item: items,
         quantity: quantity,
-        id: "61b59f0d27082b119a0c9b7e",
+        id: userId,
       })
       .then((res) => {
         console.log("add saccfully" + res);
@@ -93,14 +98,14 @@ function Shop() {
           <h5>FILTERS:</h5>
           <br></br>
           <h6>Gender</h6>
-          <Dropdown as={ButtonGroup}>
-            <Button style={{ background: "#c5269d" }}>Please select</Button>
 
+          <Dropdown as={ButtonGroup}>
             <Dropdown.Toggle
-              split
               style={{ background: "#c5269d" }}
-              id="dropdown-split-basic"
-            />
+              id="dropdown-basic"
+            >
+              Please select
+            </Dropdown.Toggle>
 
             <Dropdown.Menu>
               <Dropdown.Item
@@ -131,13 +136,12 @@ function Shop() {
           <br></br>
           <h6>Price</h6>
           <Dropdown as={ButtonGroup}>
-            <Button style={{ background: "#c5269d" }}>Please select</Button>
-
             <Dropdown.Toggle
-              split
               style={{ background: "#c5269d" }}
-              id="dropdown-split-basic"
-            />
+              id="dropdown-basic"
+            >
+              Please select
+            </Dropdown.Toggle>
 
             <Dropdown.Menu>
               <Dropdown.Item

@@ -4,11 +4,13 @@ const router = require("express").Router(),
 AdminRoutes = require("./admin");
 OrderRoutes = require("./order");
 CartRoutes = require("./cart");
+// authRoutes = require("./authRoutes");
 
 router.use("/users", UserRoutes);
 router.use("/products", ProuductRoutes);
 router.use("/admins", AdminRoutes);
 router.use("/orders", OrderRoutes);
 router.use("/carts", CartRoutes);
+// router.use(authRoutes);
 
 module.exports = router;

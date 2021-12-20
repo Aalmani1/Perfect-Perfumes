@@ -1,16 +1,27 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {  Routes, Route, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Home";
 import Shop from "./Shop";
 import Blog from "./Blog";
 import Login from "./Login";
-import CreateAccount from "./CreateAccount";
+import Signup from "./Signup";
 import Contactus from "./Contactus";
 import Cart from "./Cart";
 import Display from "./Display";
 import ErrorPage from "./ErorrPage";
+import { useState } from "react";
+
 function NavBar() {
+  const navigate = useNavigate();
+  const idLocal = localStorage.getItem("id");
+  const [id, setId] = useState(idLocal);
+  function logOut() {
+    localStorage.removeItem("id");
+    localStorage.removeItem("token");
+    setId(null);
+    navigate("/");
+  }
   return (
     <div>
       <div class="header1">
@@ -19,15 +30,31 @@ function NavBar() {
 
       <div class="header2">
         <ul class="nav1-right">
-          <li>
-            <a href="/login">LogIn</a>
-          </li>
-          <li>
-            <a href="/createaccount">Create Account</a>
-          </li>
-          <li>
-            <a href="/cart">Cart</a>
-          </li>
+          <div>
+            {id !== null ? (
+              <div>
+                <li>Welcome </li>
+                <li>
+                  <a onClick={() => logOut()}>LogOut</a>
+                </li>
+                <li>
+                <a href="/cart">Cart</a>
+              </li>
+              </div>
+            ) : (
+              <div>
+                <li>
+                  <a href="/login">LogIn</a>
+                </li>
+                <li>
+                  <a href="/signup">Sign Up</a>
+                </li>
+                <li>
+                  <a href="/cart">Cart</a>
+                </li>
+              </div>
+            )}
+          </div>
         </ul>
       </div>
       <br></br>
@@ -52,19 +79,18 @@ function NavBar() {
         </ul>
       </div>
 
-      <BrowserRouter>
+    
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/shop" element={<Shop />}></Route>
           <Route path="/blog" element={<Blog />}></Route>
           <Route path="/contactus" element={<Contactus />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/createaccount" element={<CreateAccount />}></Route>
+          <Route path="/signup" element={<Signup />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/display/:id" element={<Display />}></Route>
           <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }

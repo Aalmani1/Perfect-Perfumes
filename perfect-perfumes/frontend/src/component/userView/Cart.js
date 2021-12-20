@@ -5,10 +5,11 @@ function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState([]);
   const [load, setLoad] = useState(true);
+  const userId = localStorage.getItem("id");
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/carts/show/61b59f0d27082b119a0c9b7e")
+      .get(`http://localhost:3001/carts/show/${userId}`)
       .then((res) => {
         console.log("data " + res.data);
         setCartItems(res.data.cart);
@@ -23,7 +24,7 @@ function Cart() {
 
     axios
       .delete(
-        `http://localhost:3001/carts/delete/61b59f0d27082b119a0c9b7e/${id}`
+        `http://localhost:3001/carts/delete/${userId}/${id}`
       )
       .then((res) => {
         console.log(res.data);

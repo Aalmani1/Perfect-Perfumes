@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
-  refId: {
-    type: Number,
-    trim: true,
+  // refId: {
+  //   type: Number,
+  //   trim: true,
 
-    unique: true,
-  },
+  //   unique: true,
+  // },
   brand: {
     type: String,
     trim: true,

@@ -5,10 +5,13 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import NavBar from "./component/userView/NavBar";
 import AdminNavBar from "./component/adminView/AdminNavBar";
+import { BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
+  <BrowserRouter>
     <NavBar />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
