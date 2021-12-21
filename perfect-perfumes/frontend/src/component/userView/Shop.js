@@ -4,13 +4,25 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-
+import jwt_decode from "jwt-decode";
 function Shop() {
   const [product, setproduct] = useState([]);
   const [addItem, setAddItem] = useState([]);
   const [items, setItems] = useState(product);
   const [allItems, setAllItems] = useState(product);
-  const userId = localStorage.getItem("id");
+  // const userId = localStorage.getItem("id");
+
+  let decodedData;
+  const storedToken = localStorage.getItem("token");
+  if (storedToken) {
+    decodedData = jwt_decode(storedToken, { payload: true });
+    console.log(decodedData);
+    let expirationDate = decodedData.exp;
+    var current_time = Date.now() / 1000;
+    if (expirationDate < current_time) {
+      localStorage.removeItem("token");
+    }
+  }
 
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((res) => {
@@ -73,12 +85,12 @@ function Shop() {
     let items = item._id;
     let quantity = 1;
     console.log(items);
-    console.log(userId);
+    // console.log(userId);
     axios
       .post("http://localhost:3001/carts/create", {
         item: items,
         quantity: quantity,
-        id: userId,
+        id: decodedData.id,
       })
       .then((res) => {
         console.log("add saccfully" + res);

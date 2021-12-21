@@ -1,8 +1,11 @@
 import { Form, Button } from "react-bootstrap";
 import { Navigate } from "react-router";
 import img1 from "../imgs/imglogin.png";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Signup() {
+  const navigate = useNavigate();
   async function addtoDB(e) {
     e.preventDefault();
 
@@ -12,31 +15,37 @@ function Signup() {
     let Fname = e.target[3].value;
     let Lname = e.target[4].value;
 
-    try {
-      const res = await fetch("./signup", {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          password,
-          phoneNumber,
-          Fname,
-          Lname,
-        }),
-        headers: { "content-Type": "application/json" },
+    // try {
+    await axios
+      .post("http://localhost:3001/users/signup", {
+        email: email,
+        password: password,
+        phoneNumber: phoneNumber,
+        Fname: Fname,
+        Lname: Lname,
+      })
+      .then((res) => {
+        console.log(res.data);
+
+        if (res.data.errors) {
+          console.log(res.data.errors);
+        } else {
+          // localStorage.setItem("token", res.data.token);
+          // localStorage.setItem("id", res.data.user);
+          navigate("/");
+        }
       });
-      const data = await res.json();
-      console.log(data);
 
-      if (data.errors) {
-        // console.log(errors);
-      }
+    // if (data.errors) {
+    // console.log(errors);
+    // }
 
-      if (data.user) {
-        Navigate.assign("./");
-      }
-    } catch (err) {
-      console.log(err);
-    }
+    //   if (data.user) {
+    //     Navigate.assign("./");
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    // }
   }
 
   return (

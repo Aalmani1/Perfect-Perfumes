@@ -79,7 +79,7 @@ const Blog = () => {
             <Card>
               <Card.Img
                 variant="top"
-                style={{ height: "260px", width: "101%" }}
+                style={{ height: "260px" }}
                 src="https://www.thefragranceshop.co.uk/blog/wp-content/uploads/2021/11/BF-shopping.jpg"
               />
               <Card.Body>

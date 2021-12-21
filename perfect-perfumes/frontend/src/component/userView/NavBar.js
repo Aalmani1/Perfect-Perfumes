@@ -1,5 +1,4 @@
 import ReactDOM from "react-dom";
-import {  Routes, Route, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Home";
 import Shop from "./Shop";
@@ -11,15 +10,30 @@ import Cart from "./Cart";
 import Display from "./Display";
 import ErrorPage from "./ErorrPage";
 import { useState } from "react";
+import jwt_decode from "jwt-decode";
+import { Routes, Route, useNavigate, Link } from "react-router-dom";
 
 function NavBar() {
   const navigate = useNavigate();
-  const idLocal = localStorage.getItem("id");
-  const [id, setId] = useState(idLocal);
+  // const idLocal = localStorage.getItem("id");
+  // const [id, setId] = useState(idLocal);
+
+  let decodedData;
+  const storedToken = localStorage.getItem("token");
+  if (storedToken) {
+    decodedData = jwt_decode(storedToken, { payload: true });
+    console.log(decodedData);
+    let expirationDate = decodedData.exp;
+    var current_time = Date.now() / 1000;
+    if (expirationDate < current_time) {
+      localStorage.removeItem("token");
+    }
+  }
+
   function logOut() {
-    localStorage.removeItem("id");
+    // localStorage.removeItem("id");
     localStorage.removeItem("token");
-    setId(null);
+    // setId(null);
     navigate("/");
   }
   return (
@@ -31,26 +45,34 @@ function NavBar() {
       <div class="header2">
         <ul class="nav1-right">
           <div>
-            {id !== null ? (
+            {decodedData?.id !== undefined ? (
               <div>
-                <li>Welcome </li>
+                <li>Welcome {decodedData.Fname}</li>
                 <li>
                   <a onClick={() => logOut()}>LogOut</a>
                 </li>
                 <li>
-                <a href="/cart">Cart</a>
-              </li>
+                  <Link to="/cart">
+                    <a>Cart</a>
+                  </Link>
+                </li>
               </div>
             ) : (
               <div>
                 <li>
-                  <a href="/login">LogIn</a>
+                  <Link to="/login">
+                    <a>LogIn</a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/signup">Sign Up</a>
+                  <Link to="/signup">
+                    <a>Sign Up</a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/cart">Cart</a>
+                  <Link to="/cart">
+                    <a>Cart</a>
+                  </Link>
                 </li>
               </div>
             )}
@@ -65,32 +87,31 @@ function NavBar() {
       <div class="header3">
         <ul class="navbar1">
           <li class="mainNav1">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li class="mainNav">
-            <a href="/shop">Shop</a>
+            <Link to="/shop">Shop</Link>
           </li>
           <li class="mainNav">
-            <a href="/blog">Blog</a>
+            <Link to="/blog">Blog</Link>
           </li>
           <li class="mainNav">
-            <a href="/contactus">Contact Us</a>
+            <Link to="/contactus">Contact Us</Link>
           </li>
         </ul>
       </div>
 
-    
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/shop" element={<Shop />}></Route>
-          <Route path="/blog" element={<Blog />}></Route>
-          <Route path="/contactus" element={<Contactus />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/display/:id" element={<Display />}></Route>
-          <Route path="*" element={<ErrorPage />}></Route>
-        </Routes>
+      <Routes>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route path="/shop" element={<Shop />}></Route>
+        <Route path="/blog" element={<Blog />}></Route>
+        <Route path="/contactus" element={<Contactus />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/display/:id" element={<Display />}></Route>
+        <Route path="*" element={<ErrorPage />}></Route>
+      </Routes>
     </div>
   );
 }

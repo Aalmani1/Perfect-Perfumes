@@ -5,24 +5,24 @@ import img1 from "../imgs/imglogin.png";
 import jwt_decode from "jwt-decode";
 
 function Login() {
-  const nanigate = useNavigate();
+  const navigate = useNavigate();
   async function addtoDB(e) {
     e.preventDefault();
 
     let email = e.target[0].value;
     let password = e.target[1].value;
 
-    // let decodedData;
-    // const storedToken = localStorage.getItem("token");
-    // if (storedToken) {
-    //   decodedData = jwt_decode(storedToken, { payload: true });
-    //   console.log(decodedData);
-    //   let expirationDate = decodedData.exp;
-    //   var current_time = Date.now() / 1000;
-    //   if (expirationDate < current_time) {
-    //     localStorage.removeItem("token");
-    //   }
-    // }
+    let decodedData;
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      decodedData = jwt_decode(storedToken, { payload: true });
+      console.log(decodedData);
+      let expirationDate = decodedData.exp;
+      var current_time = Date.now() / 1000;
+      if (expirationDate < current_time) {
+        localStorage.removeItem("token");
+      }
+    }
 
     await axios
       .post("http://localhost:3001/users/login", {
@@ -36,8 +36,8 @@ function Login() {
           console.log(res.data.errors);
         } else {
           localStorage.setItem("token", res.data.token);
-          localStorage.setItem("id", res.data.user);
-          nanigate("/");
+          // localStorage.setItem("id", res.data.user);
+          navigate("/");
         }
       });
   }

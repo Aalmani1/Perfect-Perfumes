@@ -63,6 +63,30 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 <hr>
 
+# Client / Frontend
+
+​
+
+## React Router Routes (React App)
+
+​
+| Path | Component | Permissions | Behavior |
+| ---------------- | -------------------- | -------------------------- | ------------------------------------------------------------ |
+| `/` | Home page | public `<Route>` | Home page |
+| `/signup` | SignupPage | anon only `<AnonRoute>` | Signup form, link to login, navigate to homepage after signup |
+| `/login` | LoginPage | anon only `<AnonRoute>` | Login form, link to signup, navigate to homepage after login |
+| `/exitpoint` | TournamentListPage | user only `<PrivateRoute>` | Shows all exit points in a list |
+| `/exitpoint/add` | TournamentListPage | user only `<PrivateRoute>` | Edits a exit points |
+| `/exitpoint/:id` | TournamentDetailPage | user only `<PrivateRoute>` | Details of a exit points to edit |
+| `/exitpoint/:id` | n/a | user only `<PrivateRoute>` | Delete exit points |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+
 ## Models
 
 #### Admin model:

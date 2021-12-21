@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { isEmail } = require("validator");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
+const md5 = require("md5");
 
 let counter = 10000;
 const usertSchema = new mongoose.Schema({
@@ -55,21 +56,24 @@ usertSchema.post("save", function (doc, next) {
 });
 
 usertSchema.pre("save", async function (next) {
-  const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt);
+  // const salt = await bcrypt.genSalt();
+  this.password = await md5(this.password);
   next();
 });
 
 //static method to login user
 
 usertSchema.statics.login = async function (email, password) {
-  console.log(password);
   const user = await this.findOne({ email });
   if (user) {
-    const auth = await bcrypt.compare(password, user.password);
-    console.log(auth);
 
-    if (auth) {
+
+    const currentPass = md5(password) 
+    const userPass =  user.password
+
+    console.log(md5(password), user.password);
+
+    if (currentPass === userPass) {
       return user;
     }
     throw Error("incorrect password");
