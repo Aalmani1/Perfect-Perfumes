@@ -11,6 +11,7 @@ import Cart from "./Cart";
 import Display from "./Display";
 import ErrorPage from "./ErorrPage";
 import Products from "../adminView/Products";
+import Oreders from "../adminView/Oreders";
 import AddProduct from "../adminView/AddProduct";
 import UpdateProduct from "../adminView/UpdateProduct";
 import { useState } from "react";
@@ -127,6 +128,7 @@ function NavBar() {
         <Route path="/products" element={<Products />}></Route>
         <Route path="/add-product" element={<AddProduct />}></Route>
         <Route path="/update-product" element={<UpdateProduct />}></Route>
+        <Route path="/oreders" element={<Oreders />}></Route>
         <Route path="*" element={<ErrorPage />}></Route>
       </Routes>
     </div>

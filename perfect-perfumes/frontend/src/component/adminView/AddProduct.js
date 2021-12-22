@@ -4,6 +4,8 @@ import Carousel from "react-bootstrap/carousel";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import { Row, Col, Button, Form } from "react-bootstrap";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function AddProduct() {
   const [product, setProduct] = useState([]);
@@ -49,7 +51,7 @@ function AddProduct() {
         console.log(error);
       });
 
-    alert("Add Sucsesfull");
+    Swal.fire("Add Succsesfull", "", "success");
   }
   return (
     <div className="AdminAddItem">

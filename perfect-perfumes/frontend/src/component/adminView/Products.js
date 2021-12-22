@@ -2,6 +2,8 @@ import { Carousel, Button, Card } from "react-bootstrap";
 import { CardGroup, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function Products() {
   const [product, setProduct] = useState([]);
@@ -20,7 +22,8 @@ function Products() {
     axios.delete(`http://localhost:3001/products/${_id}/delete`).then((res) => {
       console.log(res.data);
       setProduct(res.data);
-      alert("Deleted Succsefully");
+      // alert("Deleted Succsefully");
+      Swal.fire("Deleted Succsefully", "", "success");
     });
   }
 

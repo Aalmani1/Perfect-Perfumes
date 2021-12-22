@@ -11,7 +11,7 @@ function Order() {
       console.log(res.data);
       setOrder(res.data);
     });
-    console.log(order);
+    // console.log(order);
   }, []);
 
   function DeleteItem(id) {
@@ -28,19 +28,18 @@ function Order() {
       <div class="row row-cols-1 row-cols-md-3 g-4" style={{ margin: " 9%" }}>
         {order.map((item) => {
           return (
-            <div class="col">
-              <div class="card h-100">
-                <img src={item.img} class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h6 class="card-title">{item.brand}</h6>
-                  <h5 class="card-title">{item.name}</h5>
-                  <small class="text-muted">Price : {item.price}</small>
-                </div>
-
-                <Button onClick={DeleteItem(item)} variant="danger">
-                  Delete
-                </Button>
-              </div>
+            <div>
+              <Card>
+                <Card.Header as="h5">Order ID</Card.Header>
+                <Card.Body>
+                  <Card.Title>Special title treatment</Card.Title>
+                  <Card.Text>
+                    With supporting text below as a natural lead-in to
+                    additional content.
+                  </Card.Text>
+                  <Button variant="danger">Cancel Order</Button>
+                </Card.Body>
+              </Card>
             </div>
           );
         })}
