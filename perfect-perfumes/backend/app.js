@@ -4,6 +4,8 @@ let mongoose = require("mongoose");
 const cookieParaser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 
+let port = 3001
+
 app = express();
 app.use(cors());
 
@@ -26,6 +28,10 @@ app.use("/", router);
 // app.use(authRoutes);
 // app.get("./home", requireAuth, (req, res) => res.render("home"));
 
-app.listen(3001, () => {
-  console.log("app work");
+app.listen(port, () => {
+  console.log("app work")
+  if(process.env.NODE_ENV === "test") app.set("port" , 3001);
+  else app.set("port",process.env.PORT || 3000 )
 });
+
+
