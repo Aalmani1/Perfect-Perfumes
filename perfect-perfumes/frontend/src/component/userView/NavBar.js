@@ -1,3 +1,4 @@
+import AdminNavBar from "../adminView/AdminNavBar";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Home";
@@ -9,6 +10,9 @@ import Contactus from "./Contactus";
 import Cart from "./Cart";
 import Display from "./Display";
 import ErrorPage from "./ErorrPage";
+import Products from "../adminView/Products";
+import AddProduct from "../adminView/AddProduct";
+import UpdateProduct from "../adminView/UpdateProduct";
 import { useState } from "react";
 import jwt_decode from "jwt-decode";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
@@ -38,68 +42,77 @@ function NavBar() {
   }
   return (
     <div>
-      <div class="header1">
-        <p class="header-text1">GET 15% OFF، USE CODE: GIFT </p>
-      </div>
-
-      <div class="header2">
-        <ul class="nav1-right">
-          <div>
-            {decodedData?.id !== undefined ? (
-              <div>
-                <li>Welcome {decodedData.Fname}</li>
-                <li>
-                  <a onClick={() => logOut()}>LogOut</a>
-                </li>
-                <li>
-                  <Link to="/cart">
-                    <a>Cart</a>
-                  </Link>
-                </li>
+      {(function () {
+        if (decodedData?.userType == "user" || decodedData == undefined) {
+          return (
+            <div>
+              <div class="header1">
+                <p class="header-text1">GET 15% OFF، USE CODE: GIFT </p>
               </div>
-            ) : (
-              <div>
-                <li>
-                  <Link to="/login">
-                    <a>LogIn</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/signup">
-                    <a>Sign Up</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/cart">
-                    <a>Cart</a>
-                  </Link>
-                </li>
+              <div class="header2">
+                <ul class="nav1-right">
+                  <div>
+                    {decodedData?.id !== undefined ? (
+                      <div>
+                        <li>Welcome {decodedData.Fname} 💕 </li>
+                        <li>
+                          <a onClick={() => logOut()}>LogOut</a>
+                        </li>
+                        <li>
+                          <Link to="/cart">
+                            <a>Cart</a>
+                          </Link>
+                        </li>
+                      </div>
+                    ) : (
+                      <div>
+                        <li>
+                          <Link to="/login">
+                            <a>LogIn</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/signup">
+                            <a>Sign Up</a>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/cart">
+                            <a>Cart</a>
+                          </Link>
+                        </li>
+                      </div>
+                    )}
+                  </div>
+                </ul>
               </div>
-            )}
-          </div>
-        </ul>
-      </div>
-      <br></br>
-      <div>
-        <h2 class="title">PERFECT PERFUMES</h2>
-      </div>
+              <br></br>
+              <div>
+                <h2 class="title">PERFECT PERFUMES</h2>
+              </div>
 
-      <div class="header3">
-        <ul class="navbar1">
-          <li class="mainNav1">
-            <Link to="/">Home</Link>
-          </li>
-          <li class="mainNav">
-            <Link to="/shop">Shop</Link>
-          </li>
-          <li class="mainNav">
-            <Link to="/blog">Blog</Link>
-          </li>
-          <li class="mainNav">
-            <Link to="/contactus">Contact Us</Link>
-          </li>
-        </ul>
-      </div>
+              <div class="header3">
+                <ul class="navbar1">
+                  <li class="mainNav1">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li class="mainNav">
+                    <Link to="/shop">Shop</Link>
+                  </li>
+                  <li class="mainNav">
+                    <Link to="/blog">Blog</Link>
+                  </li>
+                  <li class="mainNav">
+                    <Link to="/contactus">Contact Us</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          );
+        } else {
+          return <AdminNavBar />;
+        }
+      })()}
 
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
@@ -110,6 +123,9 @@ function NavBar() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/display/:id" element={<Display />}></Route>
+        <Route path="/products" element={<Products />}></Route>
+         <Route path="/add-product" element={<AddProduct />}></Route>
+        <Route path="/update-product" element={<UpdateProduct />}></Route>
         <Route path="*" element={<ErrorPage />}></Route>
       </Routes>
     </div>

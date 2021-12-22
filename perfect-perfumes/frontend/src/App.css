@@ -1,3 +1,7 @@
+.swal-button--success {
+  background: rgb(184, 33, 33);
+}
+
 .header1 {
   background-color: rgb(223, 189, 204);
   border: solid rgb(223, 189, 204);

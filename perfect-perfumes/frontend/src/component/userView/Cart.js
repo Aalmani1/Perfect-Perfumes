@@ -2,6 +2,9 @@ import Footer from "./Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import { Carousel, Button, Card } from "react-bootstrap";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -54,6 +57,14 @@ function Cart() {
     return <h4>Nothing here</h4>;
   }
 
+  function checkout(){
+    Swal.fire(
+      'Congaraduations',
+      'Your byment succsess',
+      'success'
+    )
+  }
+
   return (
     <div>
       {decodedData == undefined ? (
@@ -95,13 +106,14 @@ function Cart() {
                     >
                       X
                     </button>
+
+                    
                     <img style={{ width: "10%" }} src={item.items.img} />
                     <h6
                       style={({ textAlign: "center" }, { marginLeft: "13%" })}
                     >
                       {item.items.name}
                     </h6>
-                    <p>{item.items._id}</p>
                   </div>
                   <div className="cart-col2">
                     <h6>{item.items.price}</h6>
@@ -119,25 +131,29 @@ function Cart() {
               </div>
             );
           })}
-
-          <div className="copon">
-            <form>
-              <label>
-                Copon:
-                <input type="text" name="copon" />
-              </label>
-              <input type="submit" value="Submit" />
-            </form>
-          </div>
-
+          {
+            // <div className="copon">
+            //   <form>
+            //     <label>
+            //       Copon:
+            //       <input type="text" name="copon" />
+            //     </label>
+            //     <input type="submit" value="Submit" />
+            //   </form>
+            // </div>
+          }
           <div className="total">
             <div className="cartTotal">
-              <hr className="hr-cart1"></hr>
-              <h6>VTA : 15%</h6>
-              <h6>- copon</h6>
-              <h4 style={{ textAlign: "right" }}>Total: </h4>
-              <h3>{total}</h3>
+              <h3>Total </h3>
+              <h5> With out VTA 15% : {total}</h5>
+
+              <h5 style={{ textAlign: "right" }}>
+                With VTA 15% : {Math.floor(total * 1.15)}
+              </h5>
             </div>
+            <Button onClick={()=>{checkout()}} style={{ width: "80%" }} id="loginbtn">
+              CheckOut
+            </Button>
           </div>
         </div>
       )}

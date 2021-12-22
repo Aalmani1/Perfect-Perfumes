@@ -5,6 +5,25 @@ import axios from "axios";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import alertify from "alertifyjs";
+import "alertifyjs/build/css/alertify.css";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+
+const MySwal = withReactContent(Swal)
+const Toast = MySwal.mixin({
+    toast: true,
+    position: 'top-start',
+    showConfirmButton: false,
+    timer: 1300,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+    toast.addEventListener('mouseenter', MySwal.stopTimer)
+    toast.addEventListener('mouseleave', MySwal.resumeTimer)
+    }
+});
+
 function Shop() {
   const [product, setproduct] = useState([]);
   const [addItem, setAddItem] = useState([]);
@@ -100,7 +119,24 @@ function Shop() {
         console.log(error);
       });
     console.log(addItem);
-    alert("Add Saccfully");
+    // alert("Add Saccfully");
+    // alertify.success("Add Successfully");
+
+    // Swal.fire({
+    //   icon: "success",
+    //   title: "Add Successfully",
+    //   showCancelButton: false,
+    //   showConfirmButton: false,
+    //   timer: 1500,
+    //   // didClose=()=>{
+    //   //   Navigate('/')
+    //   // }
+    // });
+
+  Toast.fire({
+    icon: "success",
+    title: "Added Successfully",
+});
   };
 
   return (
