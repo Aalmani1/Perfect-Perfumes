@@ -1,6 +1,7 @@
 let User = require("../models/user");
 let mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const md5 = require("md5");
 
 module.exports = {
   index: (req, res) => {
@@ -101,8 +102,8 @@ const handleErrors = (err) => {
 };
 
 const maxAge = 3 * 24 * 60 * 60;
-const createToken = (id, Fname,userType)  => {
-  return jwt.sign({ id, Fname ,userType}, "secret", {
+const createToken = (id, Fname, userType) => {
+  return jwt.sign({ id, Fname, userType }, "secret", {
     expiresIn: maxAge,
   });
 };
@@ -116,11 +117,12 @@ const createToken = (id, Fname,userType)  => {
 // };
 
 module.exports.signup_post = async (req, res) => {
-  const { email, password, Lname, Fname, phoneNumber } = req.body;
+  const userPas = md5(req.body.password);
+  const { email, Lname, Fname, phoneNumber } = req.body;
   try {
     const user = await User.create({
       email,
-      password,
+      password: userPas,
       Lname,
       Fname,
       phoneNumber,

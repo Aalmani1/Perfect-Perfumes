@@ -1,12 +1,25 @@
-.swal-button--success {
-  background: rgb(184, 33, 33);
+a:link,
+a:visited {
+  color: black;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
+link:hover,
+link:active,
+a:hover,
+a:active {
+  background-color: rgb(223, 189, 204);
+  color: black;
+}
 .header1 {
   background-color: rgb(223, 189, 204);
   border: solid rgb(223, 189, 204);
   height: 2%;
 }
+
 
 .header-text1 {
   font-size: 8px;
@@ -39,23 +52,24 @@ ul {
 li {
   float: left;
 }
-
-li a Link {
+/* 
+li Link {
   display: block;
   color: rgb(0, 0, 0);
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   padding: 10px 30px;
   text-decoration: none;
 }
 
-li a:hover:not(.active) {
+li Link:hover:not(.active) {
   background-color: rgb(223, 189, 204);
   color: rgb(153, 17, 76);
-}
+}  */
 
 .nav1-right {
   float: right;
+  margin-right: 50px;
 }
 
 .active {
@@ -64,7 +78,7 @@ li a:hover:not(.active) {
 
 .title {
   text-align: center;
-  margin-left: 23%;
+  margin-left: 17%;
 }
 
 .admin-title {
@@ -76,12 +90,12 @@ li a:hover:not(.active) {
   border-width: 0.1px;
 }
 
-.mainNav {
+/* .mainNav {
   padding-left: 3%;
   padding-right: 3%;
-}
+} */
 .mainNav1 {
-  padding-left: 28%;
+  margin-left: 36%;
 }
 .adminNav1 {
   margin-left: 2%;
@@ -205,7 +219,7 @@ tr {
 .cart-col2 {
   grid-column-start: 1;
   grid-column-end: 2;
-  margin-left: -610%;
+  /* margin-left: -610%; */
 }
 .cart-col3 {
   grid-column-start: 2;
@@ -233,10 +247,6 @@ tr {
 
 .imd-display {
   height: 70%;
-}
-
-.imghome {
-  margin-left: 10%;
 }
 
 .filter {

@@ -16,6 +16,8 @@ import UpdateProduct from "../adminView/UpdateProduct";
 import { useState } from "react";
 import jwt_decode from "jwt-decode";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function NavBar() {
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ function NavBar() {
   function logOut() {
     // localStorage.removeItem("id");
     localStorage.removeItem("token");
-    // setId(null);
+    Swal.fire("LogOut successfully!", "See you soon 💕", "success");
     navigate("/");
   }
   return (
@@ -51,36 +53,33 @@ function NavBar() {
               </div>
               <div class="header2">
                 <ul class="nav1-right">
-                  <div>
+                  <div className="nav1">
                     {decodedData?.id !== undefined ? (
                       <div>
-                        <li>Welcome {decodedData.Fname} 💕 </li>
+                        <li style={{ marginLeft: "2%" }}>
+                          {" "}
+                          Welcome {decodedData.Fname} 💕{" "}
+                        </li>
                         <br></br>
                         <li>
-                          <a onClick={() => logOut()}>LogOut</a>
+                          <Link to="/cart">Cart</Link>
                         </li>
                         <li>
-                          <Link to="/cart">
-                            <a>Cart</a>
+                          <Link to="/" onClick={() => logOut()}>
+                            LogOut
                           </Link>
                         </li>
                       </div>
                     ) : (
                       <div>
                         <li>
-                          <Link to="/login">
-                            <a>LogIn</a>
-                          </Link>
+                          <Link to="/login">LogIn</Link>
                         </li>
                         <li>
-                          <Link to="/signup">
-                            <a>Sign Up</a>
-                          </Link>
+                          <Link to="/signup">Sign Up</Link>
                         </li>
                         <li>
-                          <Link to="/cart">
-                            <a>Cart</a>
-                          </Link>
+                          <Link to="/cart">Cart</Link>
                         </li>
                       </div>
                     )}
@@ -93,6 +92,7 @@ function NavBar() {
               </div>
 
               <div class="header3">
+                <br></br>
                 <ul class="navbar1">
                   <li class="mainNav1">
                     <Link to="/">Home</Link>

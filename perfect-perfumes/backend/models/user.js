@@ -55,11 +55,11 @@ usertSchema.post("save", function (doc, next) {
   next();
 });
 
-usertSchema.pre("save", async function (next) {
-  // const salt = await bcrypt.genSalt();
-  this.password = await md5(this.password);
-  next();
-});
+// usertSchema.pre("save", async function (next) {
+//   // const salt = await bcrypt.genSalt();
+//   this.password = await md5(this.password);
+//   next();
+// });
 
 //static method to login user
 

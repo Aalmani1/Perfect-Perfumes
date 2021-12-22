@@ -105,6 +105,18 @@ function Shop() {
     let quantity = 1;
     console.log(items);
     // console.log(userId);
+
+    if(decodedData == undefined){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You have to Login in First!',
+        footer: '<a href="/login">Click Here to Login</a>'
+      
+    });
+    }
+else{
+
     axios
       .post("http://localhost:3001/carts/create", {
         item: items,
@@ -137,6 +149,7 @@ function Shop() {
     icon: "success",
     title: "Added Successfully",
 });
+}
   };
 
   return (

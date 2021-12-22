@@ -45,6 +45,12 @@ function Login() {
         } else {
           localStorage.setItem("token", res.data.token);
           // localStorage.setItem("id", res.data.user);
+          Swal.fire(
+            'Successfully Login!',
+            'Welcome  💕',
+            'success',
+      
+          )
           navigate("/");
         }
       });

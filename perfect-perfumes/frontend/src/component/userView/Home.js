@@ -53,7 +53,6 @@ function Home() {
                 <CardGroup className="CardGroup">
                   <Link to={"/display/" + item._id}>
                     <Card.Img
-                      className="imghome"
                       variant="top"
                       src={item.img}
                       height="320px"

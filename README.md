@@ -248,11 +248,27 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 }
 ```
 
+## Backend routes
+
+​
+| HTTP Method | URL | Request Body | Success status | Error Status | Description |
+| ----------- | -------------- | ------------------------------------------------------------ | -------------- | ------------ | ------------------------------------------------------------ |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
+​
+
 ### Slides
+
 <a href="https://www.canva.com/design/DAEzRJ-FyXE/aPmwQ1SzxHTwv9fhON1lWw/view?utm_content=DAEzRJ-FyXE&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton">Click Here</a>
 <br></br>
-
-
 
 <hr>
 
