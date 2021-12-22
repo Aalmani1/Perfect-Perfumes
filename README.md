@@ -249,10 +249,10 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 ```
 
 ### Slides
-
+<a href="https://www.canva.com/design/DAEzRJ-FyXE/aPmwQ1SzxHTwv9fhON1lWw/view?utm_content=DAEzRJ-FyXE&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton">Click Here</a>
 <br></br>
 
-<a href="https://www.canva.com/design/DAEzRJ-FyXE/aPmwQ1SzxHTwv9fhON1lWw/view?utm_content=DAEzRJ-FyXE&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton">Click Here</a>
+
 
 <hr>
 
