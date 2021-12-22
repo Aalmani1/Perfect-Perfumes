@@ -55,6 +55,7 @@ function NavBar() {
                     {decodedData?.id !== undefined ? (
                       <div>
                         <li>Welcome {decodedData.Fname} 💕 </li>
+                        <br></br>
                         <li>
                           <a onClick={() => logOut()}>LogOut</a>
                         </li>
@@ -124,7 +125,7 @@ function NavBar() {
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/display/:id" element={<Display />}></Route>
         <Route path="/products" element={<Products />}></Route>
-         <Route path="/add-product" element={<AddProduct />}></Route>
+        <Route path="/add-product" element={<AddProduct />}></Route>
         <Route path="/update-product" element={<UpdateProduct />}></Route>
         <Route path="*" element={<ErrorPage />}></Route>
       </Routes>

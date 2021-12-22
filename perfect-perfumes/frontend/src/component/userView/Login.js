@@ -1,9 +1,10 @@
-
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import img1 from "../imgs/imglogin.png";
 import jwt_decode from "jwt-decode";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function Login() {
   const navigate = useNavigate();
@@ -34,7 +35,13 @@ function Login() {
         console.log(res.data);
 
         if (res.data.errors) {
-          console.log(res.data.errors);
+          // Swal.fire({
+          //   icon: "error",
+          //   title: "Oops...",
+          //   text: "Something went wrong!",
+          //   footer: '<a href="">Why do I have this issue?</a>',
+          // });
+          console.log( "res =>",res.data.errors);
         } else {
           localStorage.setItem("token", res.data.token);
           // localStorage.setItem("id", res.data.user);

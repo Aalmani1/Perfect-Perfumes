@@ -69,23 +69,37 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 ## React Router Routes (React App)
 
+#### User :
+
 ​
 | Path | Component | Permissions | Behavior |
 | ---------------- | -------------------- | -------------------------- | ------------------------------------------------------------ |
 | `/` | Home page | public `<Route>` | Home page |
-| `/signup` | SignupPage | anon only `<AnonRoute>` | Signup form, link to login, navigate to homepage after signup |
-| `/login` | LoginPage | anon only `<AnonRoute>` | Login form, link to signup, navigate to homepage after login |
-| `/exitpoint` | TournamentListPage | user only `<PrivateRoute>` | Shows all exit points in a list |
-| `/exitpoint/add` | TournamentListPage | user only `<PrivateRoute>` | Edits a exit points |
-| `/exitpoint/:id` | TournamentDetailPage | user only `<PrivateRoute>` | Details of a exit points to edit |
-| `/exitpoint/:id` | n/a | user only `<PrivateRoute>` | Delete exit points |
+| `/signup` | SignupPage | anon only `<Signup>` | Signup |
+| `/login` | LoginPage | anon only `<Login>` | Login |
+| `/shop` | ShopPage | user only `<Shop>` | Shows all product |
+| `/Display/:id` | DisplayPage | user only `<Display>` | Shows one product |
+| `/blog` | BlogPage | user only `<Blog>` | blog |
+| `/contactus` | ContactusPage | user only `<Contactus>` | contact us page |
+| `/cart` | n/a | user only `<Cart>` | show cart |
 | | | | |
 | | | | |
 | | | | |
 | | | | |
-| | | | |
-| | | | |
-| | | | |
+
+#### Admin :
+
+| Path              | Component         | Permissions              | Behavior                     |
+| ----------------- | ----------------- | ------------------------ | ---------------------------- |
+| `/login`          | LoginPage         | admin , user `<Login>`   | Login                        |
+| `/`               | Home page         | admin `<Route>`          | Home page                    |
+| `/product`        | ProductPage       | admin `<Shop>`           | Shows all product and delete |
+| `/add-product`    | AddProductPage    | admin `<add-product>`    | add product                  |
+| `/update-product` | UpdateProductPage | admin `<update-product>` | update product               |
+|                   |                   |                          |                              |
+|                   |                   |                          |                              |
+|                   |                   |                          |                              |
+|                   |                   |                          |                              |
 
 ## Models
 
