@@ -81,7 +81,7 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 | `/Display/:id` | DisplayPage | user only `<Display>` | Shows one product |
 | `/blog` | BlogPage | user only `<Blog>` | blog |
 | `/contactus` | ContactusPage | user only `<Contactus>` | contact us page |
-| `/cart` | n/a | user only `<Cart>` | show cart |
+| `/cart` | Cart | user only `<Cart>` | show cart |
 | | | | |
 | | | | |
 | | | | |
