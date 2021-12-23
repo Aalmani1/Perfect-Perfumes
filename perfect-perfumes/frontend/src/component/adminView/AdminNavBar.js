@@ -43,7 +43,7 @@ function AdminNavBar() {
 
       <div class="header3">
         <ul class="navbar1" className="navbar1admin" style={{ backgroundColor: "rgb(223, 189, 204)" }}>
-          <li class="mainNav" style={{ marginLeft: "25%" }}>
+          <li class="mainNav" style={{ marginLeft: "15%" }}>
             <Link to="/products">Products</Link>
           </li>
           <li class="mainNav">
@@ -55,14 +55,14 @@ function AdminNavBar() {
           <li class="adminNav1">
             <Link to="/oreders">Oreders</Link>
           </li>
-          {
-            // <li class="mainNav">
-            //   <Link to="/update-user">Update User</Link>
-            // </li>
-            // <li class="mainNav">
-            //   <Link to="/delete-user">Delete User</Link>
-            // </li>
-          }
+          
+            <li class="mainNav">
+              <Link to="/update-user">Update User</Link>
+            </li>
+            <li class="mainNav">
+              <Link to="/delete-user">Delete User</Link>
+            </li>
+          
           <li>
             <Link to="/" onClick={() => logOut()}>
               LogOut
@@ -76,11 +76,9 @@ function AdminNavBar() {
         <Route path="/add-product" element={<AddProduct />}></Route>
         <Route path="/update-product" element={<UpdateProduct />}></Route>
         <Route path="/oreders" element={<Oreders />}></Route>
-
-        {
-          // <Route path="/update-user" element={<UpdateUser />}></Route>
-          // <Route path="/delete-user" element={<DeleteUser />}></Route>
-        }
+          <Route path="/update-user" element={<UpdateUser />}></Route>
+          <Route path="/delete-user" element={<DeleteUser />}></Route>
+        
         <Route path="*" element={<ErrorPage />}></Route>
       </Routes>
     </div>

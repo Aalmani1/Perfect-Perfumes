@@ -250,20 +250,44 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 ## Backend routes
 
+### user​
+
+| HTTP Method | URL      | Request Body | Success status | Error Status | Description           |
+| ----------- | -------- | ------------ | -------------- | ------------ | --------------------- |
+| GET         | /        |              |                |              | Used to get home page |
+| GET         | /:userid |              |                |              | Used to signin        |
+| GET         | /create  |              |                |              | Used to signup        |
+|  |
+
+### admin
+
+| HTTP Method | URL       | Request Body | Success status | Error Status | Description                 |
+| ----------- | --------- | ------------ | -------------- | ------------ | --------------------------- |
+| GET         | /         |              |                |              | Used to get admin home page |
+| GET         | /:adminid |              |                |              | Used to signin              |
+| GET         | /create   |              |                |              | Used to signup              |
+
 ​
-| HTTP Method | URL | Request Body | Success status | Error Status | Description |
-| ----------- | -------------- | ------------------------------------------------------------ | -------------- | ------------ | ------------------------------------------------------------ |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-| GET | /api/user | | | | Used to get current user's profile. Id of the user is coming form the req.session.currentUser |
-​
+
+### cart
+
+| HTTP Method | URL                    | Request Body | Success status | Error Status | Description                        |
+| ----------- | ---------------------- | ------------ | -------------- | ------------ | ---------------------------------- |
+| GET         | /                      |              |                |              | Used to get cart page              |
+| GET         | /:show/:id             |              |                |              | Used to get cart for spicifec user |
+| GET         | /:cartid/update        |              |                |              | Used to update cart                |
+| GET         | /delete/:cartid/update |              |                |              | Used to update cart                |
+| GET         | /create                |              |                |              | Used to create cart                |
+
+### product
+
+| HTTP Method | URL                       | Request Body | Success status | Error Status | Description                  |
+| ----------- | ------------------------- | ------------ | -------------- | ------------ | ---------------------------- |
+| GET         | /                         |              |                |              | Used to get shop page        |
+| GET         | /:productid               |              |                |              | Used to get spicifec product |
+| GET         | /:productid/update        |              |                |              | Used to update product       |
+| GET         | /delete/:productid/update |              |                |              | Used to update product       |
+| GET         | /create                   |              |                |              | Used to create product       |
 
 ### Slides
 

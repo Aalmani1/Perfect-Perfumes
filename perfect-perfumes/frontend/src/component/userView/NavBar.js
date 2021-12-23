@@ -14,6 +14,8 @@ import Products from "../adminView/Products";
 import Oreders from "../adminView/Oreders";
 import AddProduct from "../adminView/AddProduct";
 import UpdateProduct from "../adminView/UpdateProduct";
+import UpdateUser from "../adminView/UpdateUser";
+import DeleteUser from "../adminView/DeleteUser";
 import { useState } from "react";
 import jwt_decode from "jwt-decode";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
@@ -128,6 +130,8 @@ function NavBar() {
         <Route path="/products" element={<Products />}></Route>
         <Route path="/add-product" element={<AddProduct />}></Route>
         <Route path="/update-product" element={<UpdateProduct />}></Route>
+        <Route path="/update-user" element={<UpdateUser />}></Route>
+        <Route path="/delete-user" element={<DeleteUser />}></Route>
         <Route path="/oreders" element={<Oreders />}></Route>
         <Route path="*" element={<ErrorPage />}></Route>
       </Routes>

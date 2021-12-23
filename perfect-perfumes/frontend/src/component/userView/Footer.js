@@ -71,6 +71,9 @@ function Footer() {
           </div>
         </div>
       </div>
+      <div class="header1">
+        <p class="header-text1">@ Create with Love by Amirah 💕 </p>
+      </div>
     </div>
   );
 }
