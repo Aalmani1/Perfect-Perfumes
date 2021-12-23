@@ -254,18 +254,18 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 | HTTP Method | URL      | Request Body | Success status | Error Status | Description           |
 | ----------- | -------- | ------------ | -------------- | ------------ | --------------------- |
-| GET         | /        |              |                |              | Used to get home page |
-| GET         | /:userid |              |                |              | Used to signin        |
-| GET         | /create  |              |                |              | Used to signup        |
+| GET         | /        |        400      |         200       |       error       | Used to get home page |
+| GET         | /:userid |        400      |         200       |       error       | Used to signin        |
+| GET         | /create  |        400      |         200       |        error      | Used to signup        |
 |  |
 
 ### admin
 
 | HTTP Method | URL       | Request Body | Success status | Error Status | Description                 |
 | ----------- | --------- | ------------ | -------------- | ------------ | --------------------------- |
-| GET         | /         |              |                |              | Used to get admin home page |
-| GET         | /:adminid |              |                |              | Used to signin              |
-| GET         | /create   |              |                |              | Used to signup              |
+| GET         | /         |        400      |         200       |        error      | Used to get admin home page |
+| GET         | /:adminid |        400      |         200       |        error      | Used to signin              |
+| GET         | /create   |        400      |         200       |        error      | Used to signup              |
 
 ​
 
