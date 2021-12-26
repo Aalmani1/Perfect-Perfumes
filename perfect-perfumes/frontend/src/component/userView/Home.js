@@ -11,9 +11,39 @@ import img1 from "../imgs/val.jpeg";
 import img2 from "../imgs/dior.png";
 import img3 from "../imgs/uomo.jpeg";
 import img4 from "../imgs/prands.png";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import jwt_decode from "jwt-decode";
+
+const MySwal = withReactContent(Swal);
+const Toast = MySwal.mixin({
+  toast: true,
+  position: "top-start",
+  showConfirmButton: false,
+  timer: 1300,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", MySwal.stopTimer);
+    toast.addEventListener("mouseleave", MySwal.resumeTimer);
+  },
+});
 
 function Home() {
   const [bestSiller, setbestSiller] = useState([]);
+  const [addItem, setAddItem] = useState([]);
+  const [items, setItems] = useState(bestSiller);
+
+  let decodedData;
+  const storedToken = localStorage.getItem("token");
+  if (storedToken) {
+    decodedData = jwt_decode(storedToken, { payload: true });
+    console.log(decodedData);
+    let expirationDate = decodedData.exp;
+    var current_time = Date.now() / 1000;
+    if (expirationDate < current_time) {
+      localStorage.removeItem("token");
+    }
+  }
 
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((res) => {
@@ -22,6 +52,43 @@ function Home() {
     });
     console.log(bestSiller);
   }, []);
+
+  const addToCart = (item) => {
+    // e.preventDefault();
+    let items = item._id;
+    let quantity = 1;
+    console.log(items);
+    // console.log(userId);
+
+    if (decodedData == undefined) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You have to Login First!",
+        footer: '<a href="/login">Click Here to Login</a>',
+      });
+    } else {
+      axios
+        .post("http://localhost:3001/carts/create", {
+          item: items,
+          quantity: quantity,
+          id: decodedData.id,
+        })
+        .then((res) => {
+          console.log("add saccfully" + res);
+          setAddItem([...addItem, res.data]);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      console.log(addItem);
+
+      Toast.fire({
+        icon: "success",
+        title: "Added Successfully",
+      });
+    }
+  };
 
   let arr = [];
   return (
@@ -66,7 +133,14 @@ function Home() {
                     <Card.Text style={{ textAlign: "center" }}>
                       Price: {item.price} SRA
                     </Card.Text>
-                    <Button id="loginbtn">Add To Cart</Button>
+                    <Button
+                      onClick={() => {
+                        addToCart(item);
+                      }}
+                      id="loginbtn"
+                    >
+                      Add To Cart
+                    </Button>
                   </Card.Body>
                 </CardGroup>
               );

@@ -7,6 +7,10 @@ import {  Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import errImg from "../imgs/error1img.png";
+import {Elements} from '@stripe/react-stripe-js';
+import Payment from './PaymentForm'
+import StripeCheckout from 'react-stripe-checkout'
+
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -57,17 +61,22 @@ function Cart() {
   }
   
 
-  function checkout() {
+  function checkout(token , addresses) {
     axios
       .post("http://localhost:3001/orders/create", { userId: decodedData.id })
 
       .then((res) => {
         console.log(res)
         Swal.fire("Congaraduations", "Your byment succsess", "success");
+     
       })
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  function handelSubmit (token , addresses){
+console.log({token , addresses})
   }
   
   if (load||cartItems.length==0) {
@@ -178,15 +187,17 @@ function Cart() {
             With VTA 15% : {Math.floor(total * 1.15)}
           </h5>
         </div>
-        <Button
-          onClick={() => {
-            checkout();
-          }}
-          style={{ width: "80%" }}
-          id="loginbtn"
-        >
-          CheckOut
-        </Button>
+   
+        <div className="cheakout">
+        <StripeCheckout
+        stripeKey="pk_test_51KAtlhJHCqAHPYsNWex3D5EejBTK2ghLo1NsmSZS2bTcviOBXCnjVuNNrlm8DkL3o3aV7E7BfhsOFHTOeXvC3lg800V3rLmCic"
+        token={checkout}
+        billingAddress
+        shippingAddress
+        amount={(Math.floor(total * 1.15))*100}
+        // name={cartItems}
+        />
+        </div>
       </div>
     </div>
     )

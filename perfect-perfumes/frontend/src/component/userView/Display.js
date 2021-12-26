@@ -6,11 +6,77 @@ import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { Carousel, Button } from "react-bootstrap";
 import { CardGroup, Row, Col } from "react-bootstrap";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import jwt_decode from "jwt-decode";
+
+const MySwal = withReactContent(Swal);
+const Toast = MySwal.mixin({
+  toast: true,
+  position: "top-start",
+  showConfirmButton: false,
+  timer: 1300,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener("mouseenter", MySwal.stopTimer);
+    toast.addEventListener("mouseleave", MySwal.resumeTimer);
+  },
+});
 
 function Display() {
   const { id } = useParams();
   const [product, setproduct] = useState([]);
+  const [addItem, setAddItem] = useState([]);
   const [allProduct, setAllProduct] = useState([]);
+
+  let decodedData;
+  const storedToken = localStorage.getItem("token");
+  if (storedToken) {
+    decodedData = jwt_decode(storedToken, { payload: true });
+    console.log(decodedData);
+    let expirationDate = decodedData.exp;
+    var current_time = Date.now() / 1000;
+    if (expirationDate < current_time) {
+      localStorage.removeItem("token");
+    }
+  }
+
+  const addToCart = (item) => {
+    // e.preventDefault();
+    let items = item._id;
+    let quantity = 1;
+    console.log(items);
+    // console.log(userId);
+
+    if (decodedData == undefined) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You have to Login First!",
+        footer: '<a href="/login">Click Here to Login</a>',
+      });
+    } else {
+      axios
+        .post("http://localhost:3001/carts/create", {
+          item: items,
+          quantity: quantity,
+          id: decodedData.id,
+        })
+        .then((res) => {
+          console.log("add saccfully" + res);
+          setAddItem([...addItem, res.data]);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      console.log(addItem);
+
+      Toast.fire({
+        icon: "success",
+        title: "Added Successfully",
+      });
+    }
+  };
 
   useEffect(() => {
     axios.get(`http://localhost:3001/products/${id}`).then((res) => {
@@ -26,6 +92,7 @@ function Display() {
     });
   }, []);
   let arr = [];
+  let opj = [product.img , product.brand  , product.name , product.description , product.gender,product.size,product.price]
   return (
     <div>
       <div className="container">
@@ -43,7 +110,14 @@ function Display() {
           <br></br>
           <br></br>
           <br></br>
-          <Button id="loginbtn">Buy Now</Button>
+          <Button
+            onClick={() => {
+              addToCart(opj);
+            }}
+            id="loginbtn"
+          >
+            Buy Now
+          </Button>
         </div>
       </div>
 
@@ -71,7 +145,9 @@ function Display() {
                     <Card.Text style={{ textAlign: "center" }}>
                       Price: {item.price} SRA
                     </Card.Text>
-                    <Button id="loginbtn">Add To Cart</Button>
+                    <Button          onClick={() => {
+                      addToCart(item);
+                    }} id="loginbtn">Add To Cart</Button>
                   </Card.Body>
                 </CardGroup>
               );

@@ -27,8 +27,8 @@ const Toast = MySwal.mixin({
 function Shop() {
   const [product, setproduct] = useState([]);
   const [addItem, setAddItem] = useState([]);
-  const [items, setItems] = useState(product);
-  const [allItems, setAllItems] = useState(product);
+  const [items, setItems] = useState([]);
+  const [allItems, setAllItems] = useState([]);
   // const userId = localStorage.getItem("id");
 
   let decodedData;
@@ -55,16 +55,16 @@ function Shop() {
 
   const selectPrice = (selectedPrice) => {
     let item = [];
+    let item2=[];
 
     if (selectedPrice == "hightToLow") {
       console.log("Clicked Hight to low");
-
+      
       let highestToLowest = items.sort(function (a, b) {
         return b.price - a.price;
       });
-      for (let i = 0; i < highestToLowest.length; i++) {
-        item.push(highestToLowest[i]);
-      }
+      item.push(...highestToLowest);
+
       setItems(item);
       // console.log("items from use highest To Low ===>", items);
     } else if (selectedPrice == "lowToHigh") {
@@ -72,11 +72,10 @@ function Shop() {
       let lowestToHighest = items.sort(function (a, b) {
         return a.price - b.price;
       });
-      for (let i = 0; i < lowestToHighest.length; i++) {
-        item.push(lowestToHighest[i]);
-      }
-      setItems(item);
-      console.log("items from use low To Highe ===>", items);
+      item2.push(...lowestToHighest);
+
+      setItems(item2);
+
     } else if (selectedPrice == "") {
       setItems(product);
     }
@@ -110,7 +109,7 @@ function Shop() {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'You have to Login in First!',
+        text: 'You have to Login First!',
         footer: '<a href="/login">Click Here to Login</a>'
       
     });

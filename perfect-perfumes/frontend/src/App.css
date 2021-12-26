@@ -1,3 +1,9 @@
+#cheakout {
+  float: right;
+  margin-right: 10%;
+
+}
+
 a:link,
 a:visited {
   color: black;
@@ -23,7 +29,6 @@ a:active {
 .header-text1 {
   font-size: 8px;
   text-align: center;
-  
 }
 
 .header-title2 {
@@ -89,8 +94,6 @@ li Link:hover:not(.active) {
   border-style: solid none solid none;
   border-width: 0.1px;
 }
-
-
 
 /* .mainNav {
   padding-left: 3%;

@@ -47,7 +47,8 @@ function Login() {
           // localStorage.setItem("id", res.data.user);
           Swal.fire(
             'Successfully Login!',
-            'Welcome  💕',
+             ` Welcome 💕` ,
+            //  ` Welcome ${decodedData.Fname} 💕`,
             'success',
       
           )
