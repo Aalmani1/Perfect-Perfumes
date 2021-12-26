@@ -1,2 +1,2 @@
-web: node app.j
-heroku repo:reset --app appname
+web: node app.jsls
+
