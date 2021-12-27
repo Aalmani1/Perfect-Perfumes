@@ -1,4 +1,4 @@
-import { Carousel, Button, Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { CardGroup, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
