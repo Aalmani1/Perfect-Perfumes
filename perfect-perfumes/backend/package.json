@@ -21,6 +21,8 @@
     "stripe": "^8.195.0",
     "validator": "^13.7.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    
+  },
   "description": ""
 }
