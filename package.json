@@ -9,7 +9,8 @@
     "install-client": "cd frontend && npm install",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build",
     "client": "cd frontend && npm start",
-    "start": "node app.js"
+    "start": "nodemon app.js"
+
   },
   "author": "",
   "license": "ISC",
