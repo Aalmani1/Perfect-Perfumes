@@ -26,10 +26,11 @@
     "nodemon": "^2.0.15",
     "save": "^2.4.0",
     "stripe": "^8.195.0",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
-    
+    "request": "^2.88.2"
   },
   "description": ""
 }
