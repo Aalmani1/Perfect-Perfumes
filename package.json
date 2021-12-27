@@ -1,17 +1,24 @@
 {
-  "name": "backend",
+  "name": "perfect-perfumes",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon app",
+   
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd frontend && npm run build",
     "install-client": "cd frontend && npm install",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build",
-    "client": "cd frontend && npm start",
-    "start": "nodemon app"
+    "start": "nodemon app.js",
+    "client": "cd frontend && npm start"
 
   },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aalmani1/Perfect-Perfumes"
+  },
+
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -29,7 +36,7 @@
     "validator": "^13.7.0"
     },
   "devDependencies": {
-   
+    "nodemon": "^2.0.15"
   },
   "description": ""
 }
