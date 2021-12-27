@@ -91,21 +91,23 @@ function Cart() {
   if (cartItems.length == 0) {
     return (
       <div>
-        <div className="err-col2">
-          <img className="errorImg" src={errImg} />
-        </div>
-        <div className="err-col1">
-          <div className="error">
-            <h1>Cart Empty !</h1>
-            <h4>
-              Add products from the shop page or you can click on the button ..
-            </h4>
-            <br></br>
-            <Link to={"/shop"}>
-              <Button style={{ background: "#c5269d" }}>Go to Shop</Button>
-            </Link>
+        <div className="container-empty">
+          <div>
+            <img
+              className="empty-img"
+              src={"http://www.brushaplush.com/assets/img/icon/emptybag3.png"}
+            />
           </div>
         </div>
+        <div className="container-empty2">
+          <Link to={"/shop"}>
+            <Button style={{ background: "#c5269d" }}>Go to Shop</Button>
+          </Link>
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <Footer />
       </div>
     );
   }
