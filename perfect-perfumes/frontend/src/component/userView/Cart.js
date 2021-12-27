@@ -208,7 +208,7 @@ function Cart() {
                     amount={Math.floor((total * 1.15) / 3.75) * 100}
                     // name={cartItems}
                   >
-                    <Button> Checkout </Button>
+                    <Button id="cheakout">Checkout</Button>
                   </StripeCheckout>
                 </div>
               </div>

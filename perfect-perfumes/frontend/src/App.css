@@ -1,8 +1,8 @@
-.cheakout {
+#cheakout {
   float: right;
-  margin-right: 10%;
-  color: #c5269d;
-
+  margin-right: 8%;
+  background: #c5269d;
+  width: 20%;
 }
 
 a:link,
