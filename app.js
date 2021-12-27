@@ -53,8 +53,9 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend/build/index.html"));
 });
 
-app.listen(port, () => {
-  console.log("app work");
-  if (process.env.NODE_ENV === "test") app.set("port", 3001);
-  else app.set("port", process.env.PORT || 3000);
-});
+app.listen(process.env.PORT || 3001);
+// app.listen(port, () => {
+//   console.log("app work");
+//   if (process.env.NODE_ENV === "test") app.set("port", 3001);
+//   else app.set("port", process.env.PORT || 3000);
+// });
