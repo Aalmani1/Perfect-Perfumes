@@ -1,2 +1,2 @@
-web: node app.jsls
+web: node app.js
 
