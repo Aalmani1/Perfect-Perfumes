@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Carousel } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
-import { Row, Col, Button, Form } from "react-bootstrap";
+// import { Carousel } from "react-bootstrap";
+// import Card from "react-bootstrap/Card";
+// import CardGroup from "react-bootstrap/CardGroup";
+import { Button, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+// import withReactContent from "sweetalert2-react-content";
 
 function UpdateProduct() {
   const [product, setProduct] = useState([]);

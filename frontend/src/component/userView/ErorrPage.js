@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import errImg from "../imgs/error1img.png";
-import Home from "./Home";
+// import Home from "./Home";
 import Footer from "./Footer";
 
 function Error() {

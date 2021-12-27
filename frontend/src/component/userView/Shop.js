@@ -1,11 +1,11 @@
-import { Carousel, Button, Card } from "react-bootstrap";
-import { CardGroup, Row, Col, Dropdown, ButtonGroup } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Dropdown, ButtonGroup } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import alertify from "alertifyjs";
+// import alertify from "alertifyjs";
 import "alertifyjs/build/css/alertify.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";

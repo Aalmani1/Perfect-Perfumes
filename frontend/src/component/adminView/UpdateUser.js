@@ -1,9 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Carousel } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import CardGroup from "react-bootstrap/CardGroup";
-import { Row, Col, Button, Form } from "react-bootstrap";
+// import axios from "axios";
+import React from "react";
+// import { Carousel } from "react-bootstrap";
+// import Card from "react-bootstrap/Card";
+// import CardGroup from "react-bootstrap/CardGroup";
+import { Button, Form } from "react-bootstrap";
 
 function UpdateUser() {
   return (

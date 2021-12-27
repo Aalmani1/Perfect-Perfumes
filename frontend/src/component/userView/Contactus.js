@@ -33,6 +33,7 @@ function Contactus() {
           </Button>
         </Form>
       </div>
+      <Footer />
     </div>
   );
 }

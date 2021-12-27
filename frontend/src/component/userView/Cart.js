@@ -2,13 +2,13 @@ import Footer from "./Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Carousel, Button, Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import errImg from "../imgs/error1img.png";
-import { Elements } from "@stripe/react-stripe-js";
-import Payment from "./PaymentForm";
+// import withReactContent from "sweetalert2-react-content";
+// import errImg from "../imgs/error1img.png";
+// import { Elements } from "@stripe/react-stripe-js";
+// import Payment from "./PaymentForm";
 import StripeCheckout from "react-stripe-checkout";
 import { useNavigate } from "react-router";
 

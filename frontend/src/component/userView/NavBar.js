@@ -1,5 +1,5 @@
 import AdminNavBar from "../adminView/AdminNavBar";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Home";
 import Shop from "./Shop";
@@ -16,11 +16,11 @@ import AddProduct from "../adminView/AddProduct";
 import UpdateProduct from "../adminView/UpdateProduct";
 import UpdateUser from "../adminView/UpdateUser";
 import DeleteUser from "../adminView/DeleteUser";
-import { useState } from "react";
+// import { useState } from "react";
 import jwt_decode from "jwt-decode";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+// import withReactContent from "sweetalert2-react-content";
 
 function NavBar() {
   const navigate = useNavigate();

@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import { Carousel, Button } from "react-bootstrap";
-import { CardGroup, Row, Col } from "react-bootstrap";
+import { CardGroup, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import img1 from "../imgs/imglogin.png";
 import jwt_decode from "jwt-decode";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+// import withReactContent from "sweetalert2-react-content";
 
 function Login() {
   const navigate = useNavigate();
@@ -41,17 +41,16 @@ function Login() {
           //   text: "Something went wrong!",
           //   footer: '<a href="">Why do I have this issue?</a>',
           // });
-          console.log( "res =>",res.data.errors);
+          console.log("res =>", res.data.errors);
         } else {
           localStorage.setItem("token", res.data.token);
           // localStorage.setItem("id", res.data.user);
           Swal.fire(
-            'Successfully Login!',
-             ` Welcome 💕` ,
+            "Successfully Login!",
+            ` Welcome 💕`,
             //  ` Welcome ${decodedData.Fname} 💕`,
-            'success',
-      
-          )
+            "success"
+          );
           navigate("/");
         }
       });

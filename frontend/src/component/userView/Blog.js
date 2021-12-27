@@ -1,5 +1,5 @@
-import { Carousel, Button } from "react-bootstrap";
-import { CardGroup, Row, Col, Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import img1 from "../imgs/imglogin.png";
 import Footer from "./Footer";
 

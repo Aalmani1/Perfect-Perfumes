@@ -1,9 +1,9 @@
 import { Button, Card } from "react-bootstrap";
-import { CardGroup, Row, Col } from "react-bootstrap";
+// import { CardGroup, Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+// import withReactContent from "sweetalert2-react-content";
 
 function Products() {
   const [product, setProduct] = useState([]);

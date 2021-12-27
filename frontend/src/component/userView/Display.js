@@ -1,11 +1,11 @@
-import NavBar from "./NavBar";
+// import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { useParams } from "react-router";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import { Carousel, Button } from "react-bootstrap";
-import { CardGroup, Row, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import { CardGroup, Row } from "react-bootstrap";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import jwt_decode from "jwt-decode";

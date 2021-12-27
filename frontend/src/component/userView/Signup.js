@@ -1,5 +1,5 @@
 import { Form, Button } from "react-bootstrap";
-import { Navigate } from "react-router";
+// import { Navigate } from "react-router";
 import img1 from "../imgs/imglogin.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
