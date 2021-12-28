@@ -6,7 +6,6 @@ function Contactus() {
   return (
     <div>
       <br></br>
-      <br></br>
       <img className="login-img" src={img1} />
       <div>
         <Form className="login-form">
