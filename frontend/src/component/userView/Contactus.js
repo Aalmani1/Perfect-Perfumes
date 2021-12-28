@@ -5,7 +5,6 @@ import Footer from "./Footer";
 function Contactus() {
   return (
     <div>
-      <br></br>
       <img className="login-img" src={img1} />
       <div>
         <Form className="login-form">
