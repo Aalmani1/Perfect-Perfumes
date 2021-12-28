@@ -1,7 +1,7 @@
 let express = require("express");
 let cors = require("cors");
 let mongoose = require("mongoose");
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 const cookieParaser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 const stripe = require("stripe")(
@@ -60,6 +60,9 @@ app.get("*", (req, res) => {
 //   else app.set("port", process.env.PORT || 3000);
 // });
 
-app.listen(PORT, () => {
-  console.log(`Connected on= http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Connected on= http://localhost:${PORT}`);
+// });
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT);
