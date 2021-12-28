@@ -53,7 +53,7 @@ app.post("/payment", (req, res) => {
 
 app.get("*", (req, res) => {
   console.log(path.resolve(__dirname, "frontend/build/index.html"));
-  res.sendFile(path.resolve(__dirname, "frontend/build/index.html"));
+  res.sendFile(path.resolve(__dirname, "..frontend/build", "index.html"));
 });
 
 app.listen(process.env.PORT || 3001, () => {
