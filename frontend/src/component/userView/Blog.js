@@ -11,7 +11,7 @@ const Blog = () => {
           <img className="blogImg" src={img1} />
         </div>
         <div className="error">
-          <h2>Blog</h2>
+          <h2>Blog test</h2>
         </div>
       </div>
       <br></br>
