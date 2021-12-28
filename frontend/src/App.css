@@ -140,7 +140,7 @@ li Link:hover:not(.active) {
 
 .login-img {
   position: absolute;
-  margin-top: 2%;
+  margin-top: 0.5%;
   height: 81%;
   width: 100%;
 }
