@@ -2,6 +2,7 @@ let express = require("express");
 let cors = require("cors");
 let mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
+const path = require("path");
 const cookieParaser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 const stripe = require("stripe")(
@@ -54,11 +55,11 @@ app.get("*", (req, res) => {
   console.log(path.resolve(__dirname, "frontend/build/index.html"));
   res.sendFile(path.resolve(__dirname, "frontend/build/index.html"));
 });
-const host = "0.0.0.0";
+
 app.listen(process.env.PORT || 3001, () => {
   console.log("app work");
-  if (process.env.NODE_ENV === "test") app.set(PORT, host, 3001);
-  else app.set(PORT, host, process.env.PORT || 3000);
+  if (process.env.NODE_ENV === "test") app.set(PORT, 3001);
+  else app.set(PORT, process.env.PORT || 3000);
 });
 
 // app.listen(PORT, () => {
