@@ -53,18 +53,17 @@ app.post("/payment", (req, res) => {
 
 app.get("*", (req, res) => {
   console.log(path.resolve(__dirname, "frontend/build/index.html"));
-  res.sendFile(path.resolve(__dirname, "frontend/build", "index.html"));
+  res.sendFile(path.resolve(__dirname + "/frontend/build", "index.html"));
 });
 
-app.listen(process.env.PORT || 3001, () => {
-  console.log("app work");
-  if (process.env.NODE_ENV === "test") app.set(PORT, 3001);
-  else app.set(PORT, process.env.PORT || 3000);
-});
+// app.listen(process.env.PORT || 3001, () => {
+//   console.log("app work");
+//   if (process.env.NODE_ENV === "test") app.set(PORT, 3001);
+//   else app.set(PORT, process.env.PORT || 3000);
+// });
 
 // app.listen(PORT, () => {
 //   console.log(`Connected on= http://localhost:${PORT}`);
 // });
 
-// const PORT = process.env.PORT || 3001;
-// app.listen(PORT);
+app.listen(PORT);
