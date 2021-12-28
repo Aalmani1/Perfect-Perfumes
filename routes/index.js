@@ -11,6 +11,9 @@ router.use("/products", ProuductRoutes);
 router.use("/admins", AdminRoutes);
 router.use("/orders", OrderRoutes);
 router.use("/carts", CartRoutes);
+router.use("/", (req, res) => {
+  res.send("UUUU");
+});
 // router.use(authRoutes);
 
 module.exports = router;
