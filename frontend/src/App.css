@@ -110,10 +110,12 @@ li Link:hover:not(.active) {
   border-width: 0.1px;
 }
 
-/* .mainNav {
+/* 
+.mainNav {
   padding-left: 3%;
   padding-right: 3%;
-} */
+} 
+*/
 .mainNav1 {
   margin-left: 36%;
 }
@@ -138,7 +140,8 @@ li Link:hover:not(.active) {
 
 .login-img {
   position: absolute;
-  margin-top: 0%;
+
+  margin-top: -1%;
   height: 81%;
   width: 100%;
 }
