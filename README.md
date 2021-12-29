@@ -254,18 +254,18 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 | HTTP Method | URL      | Request Body | Success status | Error Status | Description           |
 | ----------- | -------- | ------------ | -------------- | ------------ | --------------------- |
-| GET         | /        |        400      |         200       |       error       | Used to get home page |
-| GET         | /:userid |        400      |         200       |       error       | Used to signin        |
-| GET         | /create  |        400      |         200       |        error      | Used to signup        |
-|  |
+| GET         | /        | 400          | 200            | error        | Used to get home page |
+| GET         | /:userid | 400          | 200            | error        | Used to signin        |
+| GET         | /create  | 400          | 200            | error        | Used to signup        |
+|             |
 
 ### admin
 
 | HTTP Method | URL       | Request Body | Success status | Error Status | Description                 |
 | ----------- | --------- | ------------ | -------------- | ------------ | --------------------------- |
-| GET         | /         |        400      |         200       |        error      | Used to get admin home page |
-| GET         | /:adminid |        400      |         200       |        error      | Used to signin              |
-| GET         | /create   |        400      |         200       |        error      | Used to signup              |
+| GET         | /         | 400          | 200            | error        | Used to get admin home page |
+| GET         | /:adminid | 400          | 200            | error        | Used to signin              |
+| GET         | /create   | 400          | 200            | error        | Used to signup              |
 
 ​
 
@@ -273,21 +273,21 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 
 | HTTP Method | URL                    | Request Body | Success status | Error Status | Description                        |
 | ----------- | ---------------------- | ------------ | -------------- | ------------ | ---------------------------------- |
-| GET         | /                      |     400         |        200        |         error     | Used to get cart page              |
-| GET         | /:show/:id             |       400       |        200        |        error      | Used to get cart for spicifec user |
-| GET         | /:cartid/update        |       400       |         200       |       error       | Used to update cart                |
-| GET         | /delete/:cartid/update |       400       |        200        |       error       | Used to update cart                |
-| GET         | /create                |       400       |        200        |       error       | Used to create cart                |
+| GET         | /                      | 400          | 200            | error        | Used to get cart page              |
+| GET         | /:show/:id             | 400          | 200            | error        | Used to get cart for spicifec user |
+| GET         | /:cartid/update        | 400          | 200            | error        | Used to update cart                |
+| GET         | /delete/:cartid/update | 400          | 200            | error        | Used to update cart                |
+| GET         | /create                | 400          | 200            | error        | Used to create cart                |
 
 ### product
 
 | HTTP Method | URL                       | Request Body | Success status | Error Status | Description                  |
 | ----------- | ------------------------- | ------------ | -------------- | ------------ | ---------------------------- |
-| GET         | /                         |       400       |       200         |      error        | Used to get shop page        |
-| GET         | /:productid               |      400        |        200        |       error       | Used to get spicifec product |
-| GET         | /:productid/update        |       400       |        200        |       error       | Used to update product       |
-| GET         | /delete/:productid/update |       400       |        200        |       error       | Used to update product       |
-| GET         | /create                   |       400       |        200        |        error      | Used to create product       |
+| GET         | /                         | 400          | 200            | error        | Used to get shop page        |
+| GET         | /:productid               | 400          | 200            | error        | Used to get spicifec product |
+| GET         | /:productid/update        | 400          | 200            | error        | Used to update product       |
+| GET         | /delete/:productid/update | 400          | 200            | error        | Used to update product       |
+| GET         | /create                   | 400          | 200            | error        | Used to create product       |
 
 ### Slides
 
@@ -297,3 +297,5 @@ We come from a place that understands your beauty needs. Beauty is all about exc
 <hr>
 
 ### Deployed App Link:
+
+<a href='https://perfect-perfumes.herokuapp.com/'>Click Here</a>
