@@ -56,6 +56,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname + "/frontend/build", "index.html"));
 });
 
+app.listen(PORT);
+
 // app.listen(process.env.PORT || 3001, () => {
 //   console.log("app work");
 //   if (process.env.NODE_ENV === "test") app.set(PORT, 3001);
@@ -65,5 +67,3 @@ app.get("*", (req, res) => {
 // app.listen(PORT, () => {
 //   console.log(`Connected on= http://localhost:${PORT}`);
 // });
-
-app.listen(PORT);

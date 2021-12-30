@@ -75,8 +75,8 @@ function Cart() {
 
         console.log(res);
         Swal.fire({
-          title: "Congaraduations",
-          text: "Your byment succsess",
+          title: "Congratulations",
+          text: "Successfully purchased",
           icon: "success",
           didClose: () => {
             navigate("/");
@@ -197,10 +197,10 @@ function Cart() {
               <div className="total">
                 <div className="cartTotal">
                   <h3>Total </h3>
-                  <h5> With out VTA 15% : {total}</h5>
+                  <h5> With out VAT 15% : {total}</h5>
 
                   <h5 style={{ textAlign: "right" }}>
-                    With VTA 15% : {Math.floor(total * 1.15)}
+                    With VAT 15% : {Math.floor(total * 1.15) * 100}
                   </h5>
                 </div>
 
