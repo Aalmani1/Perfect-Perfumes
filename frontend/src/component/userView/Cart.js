@@ -200,7 +200,7 @@ function Cart() {
                   <h5> With out VAT 15% : {total}</h5>
 
                   <h5 style={{ textAlign: "right" }}>
-                    With VAT 15% : {Math.floor(total * 1.15) * 100}
+                    With VAT 15% : {Math.floor(total * 1.15)}
                   </h5>
                 </div>
 
