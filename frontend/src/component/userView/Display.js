@@ -57,7 +57,7 @@ function Display() {
       });
     } else {
       axios
-        .post("http://localhost:3001/carts/create", {
+        .post("/carts/create", {
           item: items,
           quantity: quantity,
           id: decodedData.id,
@@ -79,14 +79,14 @@ function Display() {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/products/${id}`).then((res) => {
+    axios.get(`/products/${id}`).then((res) => {
       // console.log(res.data.product);
       setproduct(res.data.product);
     });
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/products`).then((res) => {
+    axios.get(`/products`).then((res) => {
       // console.log(res.data.product);
       setAllProduct(res.data);
     });
