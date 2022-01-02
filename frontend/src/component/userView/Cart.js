@@ -179,16 +179,15 @@ function Cart() {
 
               {
                 //copon form
-
-                <div className="copon">
-                  <form>
-                    <label>
-                      Copon:
-                      <input type="text" name="copon" />
-                    </label>
-                    <input type="submit" value="Submit" />
-                  </form>
-                </div>
+                // <div className="copon">
+                //   <form>
+                //     <label>
+                //       Copon:
+                //       <input type="text" name="copon" />
+                //     </label>
+                //     <input type="submit" value="Submit" />
+                //   </form>
+                // </div>
               }
 
               <div className="total">
