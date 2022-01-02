@@ -50,7 +50,7 @@ function Shop() {
   }, [product]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/products").then((res) => {
+    axios.get("/products").then((res) => {
       // console.log(res.data);
       setproduct(res.data);
       setItems(res.data);
@@ -85,7 +85,7 @@ function Shop() {
 
       setItems(item2);
     } else if (selectedPrice === "") {
-      axios.get("http://localhost:3001/products").then((res) => {
+      axios.get("/products").then((res) => {
         // console.log(res.data);
         setproduct(res.data);
         setItems(res.data);
@@ -128,7 +128,7 @@ function Shop() {
       });
     } else {
       axios
-        .post("http://localhost:3001/carts/create", {
+        .post("/carts/create", {
           item: items,
           quantity: quantity,
           id: decodedData.id,

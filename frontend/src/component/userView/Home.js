@@ -46,7 +46,7 @@ function Home() {
   }
 
   useEffect(() => {
-    axios.get("http://localhost:3001/products").then((res) => {
+    axios.get("/products").then((res) => {
       console.log(res.data);
       setbestSiller(res.data);
     });
@@ -69,7 +69,7 @@ function Home() {
       });
     } else {
       axios
-        .post("http://localhost:3001/carts/create", {
+        .post("/carts/create", {
           item: items,
           quantity: quantity,
           id: decodedData.id,

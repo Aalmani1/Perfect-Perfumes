@@ -36,14 +36,12 @@ function Cart() {
     if (decodedData == undefined) {
       return <h3>noo</h3>;
     } else {
-      axios
-        .get(`http://localhost:3001/carts/show/${decodedData.id}`)
-        .then((res) => {
-          console.log("data " + res.data);
-          setCartItems(res.data.cart);
-          setTotal(res.data.total);
-          setLoad(false);
-        });
+      axios.get(`/carts/show/${decodedData.id}`).then((res) => {
+        console.log("data " + res.data);
+        setCartItems(res.data.cart);
+        setTotal(res.data.total);
+        setLoad(false);
+      });
       console.log(cartItems);
     }
   }, []);
@@ -51,23 +49,21 @@ function Cart() {
   function deleteItem(id) {
     console.log("delete button", id);
 
-    axios
-      .delete(`http://localhost:3001/carts/delete/${decodedData.id}/${id}`)
-      .then((res) => {
-        console.log(res.data);
-        setCartItems(res.data.cart);
-        setTotal(res.data.total);
-        setLoad(false);
-      });
+    axios.delete(`/carts/delete/${decodedData.id}/${id}`).then((res) => {
+      console.log(res.data);
+      setCartItems(res.data.cart);
+      setTotal(res.data.total);
+      setLoad(false);
+    });
   }
 
   function checkout(token, addresses) {
     axios
-      .post("http://localhost:3001/orders/create", { userId: decodedData.id })
+      .post("/orders/create", { userId: decodedData.id })
 
       .then(async (res) => {
         try {
-          const res = await axios.post("http://localhost:3001/payment", {
+          const res = await axios.post("/payment", {
             tokenId: token.id,
             amount: total * 3.75 * 100,
           });

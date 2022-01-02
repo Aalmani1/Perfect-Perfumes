@@ -17,7 +17,7 @@ function Signup() {
 
     // try {
     await axios
-      .post("http://localhost:3001/users/signup", {
+      .post("/users/signup", {
         email: email,
         password: password,
         phoneNumber: phoneNumber,
