@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 
 function Login() {
   const navigate = useNavigate();
-
   async function addtoDB(e) {
     e.preventDefault();
 
@@ -28,7 +27,7 @@ function Login() {
     }
 
     await axios
-      .post("/users/login", {
+      .post("http://localhost:3001/users/login", {
         email: email,
         password: password,
       })
@@ -52,11 +51,7 @@ function Login() {
             //  ` Welcome ${decodedData.Fname} 💕`,
             "success"
           );
-          if (decodedData?.userType == "user") {
-            navigate("/product");
-          } else {
-            navigate("/");
-          }
+          navigate("/");
         }
       });
   }
