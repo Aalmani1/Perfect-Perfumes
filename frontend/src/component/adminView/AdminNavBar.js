@@ -67,7 +67,7 @@ function AdminNavBar() {
             <Link to="/delete-user">Delete User</Link>
           </li>
 
-          <li>
+          <li style={{ backgroundColor: "#b30000" }}>
             <Link to="/" onClick={() => logOut()}>
               LogOut
             </Link>

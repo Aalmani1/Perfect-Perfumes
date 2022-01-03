@@ -55,6 +55,7 @@ function UpdateProduct() {
 
   return (
     <div className="AdminAddItem">
+      <h3 style={{ textAlign: "center" }}>Update Product</h3>
       <Form
         onSubmit={(e) => {
           putData(e);

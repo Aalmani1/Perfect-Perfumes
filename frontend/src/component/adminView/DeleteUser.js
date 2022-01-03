@@ -1,5 +1,5 @@
 function DeleteUser() {
-  return <h1>DeleteUser</h1>;
+  return <h3 style={{ textAlign: "center" }}>Delete user</h3>;
 }
 
 export default DeleteUser;

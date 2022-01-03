@@ -8,6 +8,7 @@ import { Button, Form } from "react-bootstrap";
 function UpdateUser() {
   return (
     <div className="AdminAddItem">
+      <h3 style={{ textAlign: "center" }}>Update User</h3>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>refrence Id</Form.Label>

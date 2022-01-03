@@ -2,6 +2,8 @@ let Product = require("../models/product");
 
 module.exports = {
   index: (req, res) => {
+    console.log("show");
+
     Product.find({})
       .then((products) => {
         res.json(products);

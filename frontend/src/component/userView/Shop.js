@@ -91,6 +91,7 @@ function Shop() {
         setItems(res.data);
         setAllItems(res.data);
       });
+      // setItems(product);
     }
   };
 

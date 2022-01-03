@@ -1,5 +1,5 @@
 function UpdateOrder() {
-  return <h1>UpdateOrder</h1>;
+  return <h3 style={{ textAlign: "center" }}>Update Order</h3>;
 }
 
 export default UpdateOrder;

@@ -9,7 +9,7 @@ const stripe = require("stripe")(
   "sk_test_51KAtlhJHCqAHPYsNWnG0yKdMLQHujQYFpLJwkxYHJcnyhlboIAiF8o5LiKr0DcknXa6gsRiFHmJieUibdr9tW41j008trAF9a2"
 );
 
-let port = 3001;
+// let port = 3001;
 
 app = express();
 app.use(cors());
@@ -27,6 +27,10 @@ mongoose.Promise = global.Promise;
 mongoose.connect(
   "mongodb+srv://admin:12345@cluster0.lpoxw.mongodb.net/Perfect-Perfumes?retryWrites=true&w=majority"
 );
+
+mongoose.connection.on("connected", () => {
+  console.log("Mongoose connected");
+});
 
 //routes
 // app.get("*", checkUser);
@@ -62,7 +66,7 @@ app.listen(process.env.PORT || 3001, () => {
       console.log(path.resolve(__dirname, "frontend/build/index.html"));
       res.sendFile(path.resolve(__dirname + "/frontend/build", "index.html"));
     });
-  } else app.set(PORT, process.env.PORT || 3000);
+  } else app.set(PORT, process.env.PORT || 3001);
 });
 
 // app.listen(PORT, () => {

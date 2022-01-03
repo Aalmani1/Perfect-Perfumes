@@ -9,7 +9,7 @@ function Products() {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/products").then((res) => {
+    axios.get("/products").then((res) => {
       console.log(res.data);
       setProduct(res.data);
     });
@@ -19,7 +19,7 @@ function Products() {
   function DeleteItem(_id) {
     // e.preventDefault();
     // console.log("test button" + _id);
-    axios.delete(`http://localhost:3001/products/${_id}/delete`).then((res) => {
+    axios.delete(`/products/${_id}/delete`).then((res) => {
       console.log(res.data);
       setProduct(res.data);
       // alert("Deleted Succsefully");
@@ -29,7 +29,8 @@ function Products() {
 
   return (
     <div>
-      <div class="row row-cols-1 row-cols-md-3 g-4" style={{ margin: " 9%" }}>
+      <h3 style={{ textAlign: "center" }}>Product</h3>
+      <div class="row row-cols-1 row-cols-md-3 g-4" style={{ margin: " 10%" }}>
         {product.map((item) => {
           return (
             <div class="col">
@@ -42,6 +43,12 @@ function Products() {
                   <small class="text-muted">Price : {item.price}</small>
                 </div>
 
+                <Button
+                  onClick={() => DeleteItem(item._id)}
+                  variant="secondary"
+                >
+                  Update
+                </Button>
                 <Button onClick={() => DeleteItem(item._id)} variant="danger">
                   Delete
                 </Button>

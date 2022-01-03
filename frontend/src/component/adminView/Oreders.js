@@ -25,6 +25,7 @@ function Order() {
 
   return (
     <div>
+      <h3 style={{ textAlign: "center" }}>Orders</h3>
       <div class="row row-cols-1 row-cols-md-3 g-4" style={{ margin: " 9%" }}>
         {order.map((item) => {
           return (
