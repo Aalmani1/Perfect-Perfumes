@@ -52,7 +52,11 @@ function Login() {
             //  ` Welcome ${decodedData.Fname} 💕`,
             "success"
           );
-          navigate("/");
+          if (decodedData?.userType == "user") {
+            navigate("/product");
+          } else {
+            navigate("/");
+          }
         }
       });
   }

@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 // import withReactContent from "sweetalert2-react-content";
 
 function Products() {
@@ -27,6 +28,10 @@ function Products() {
     });
   }
 
+  function updateItem(_id) {
+    // Swal.fire("Updated Succsefully", "", "success");
+  }
+
   return (
     <div>
       <h3 style={{ textAlign: "center" }}>Product</h3>
@@ -43,12 +48,14 @@ function Products() {
                   <small class="text-muted">Price : {item.price}</small>
                 </div>
 
-                <Button
-                  onClick={() => DeleteItem(item._id)}
-                  variant="secondary"
-                >
-                  Update
-                </Button>
+                <Link to={"/update-product/" + item}>
+                  <Button
+                    onClick={() => updateItem(item._id)}
+                    variant="secondary"
+                  >
+                    Update
+                  </Button>
+                </Link>
                 <Button onClick={() => DeleteItem(item._id)} variant="danger">
                   Delete
                 </Button>

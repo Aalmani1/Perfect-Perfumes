@@ -10,6 +10,7 @@ import Oreders from "./Oreders";
 import ErrorPage from "../userView/ErorrPage";
 import jwt_decode from "jwt-decode";
 import { useNavigate, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function AdminNavBar() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function AdminNavBar() {
   function logOut() {
     // localStorage.removeItem("id");
     localStorage.removeItem("token");
-    // setId(null);
+    Swal.fire("LogOut successfully!", "See you soon", "success");
     navigate("/");
   }
 
@@ -48,23 +49,23 @@ function AdminNavBar() {
           style={{ backgroundColor: "rgb(223, 189, 204)" }}
         >
           <li class="mainNav" style={{ marginLeft: "15%" }}>
-            <Link to="/products">Products</Link>
+            <Link to="/admin/products">Products</Link>
           </li>
           <li class="mainNav">
-            <Link to="/add-product">Add Product</Link>
+            <Link to="/admin/add-product">Add Product</Link>
           </li>
           <li class="mainNav">
-            <Link to="/update-product">Update Product</Link>
+            <Link to="/admin/update-product">Update Product</Link>
           </li>
           <li class="adminNav1">
-            <Link to="/oreders">Oreders</Link>
+            <Link to="/admin/oreders">Oreders</Link>
           </li>
 
           <li class="mainNav">
-            <Link to="/update-user">Update User</Link>
+            <Link to="/admin/update-user">Update User</Link>
           </li>
           <li class="mainNav">
-            <Link to="/delete-user">Delete User</Link>
+            <Link to="/admin/delete-user">Delete User</Link>
           </li>
 
           <li style={{ backgroundColor: "#b30000" }}>
@@ -76,14 +77,13 @@ function AdminNavBar() {
       </div>
 
       <Routes>
-        <Route path="/products" element={<Products />}></Route>
-        <Route path="/add-product" element={<AddProduct />}></Route>
-        <Route path="/update-product" element={<UpdateProduct />}></Route>
-        <Route path="/oreders" element={<Oreders />}></Route>
-        <Route path="/update-user" element={<UpdateUser />}></Route>
-        <Route path="/delete-user" element={<DeleteUser />}></Route>
-
-        <Route path="*" element={<ErrorPage />}></Route>
+        <Route path="/admin/products" element={<Products />}></Route>
+        <Route path="/admin/add-product" element={<AddProduct />}></Route>
+        <Route path="/admin/update-product" element={<UpdateProduct />}></Route>
+        <Route path="/admin/oreders" element={<Oreders />}></Route>
+        <Route path="/admin/update-user" element={<UpdateUser />}></Route>
+        <Route path="/admin/delete-user" element={<DeleteUser />}></Route>
+        <Route path="/admin/*" element={<ErrorPage />}></Route>
       </Routes>
     </div>
   );
