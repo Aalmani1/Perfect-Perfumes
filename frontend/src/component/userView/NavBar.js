@@ -65,7 +65,7 @@ function NavBar() {
                         </li>
                         <br></br>
                         <li>
-                          <Link to="/user/cart">Cart</Link>
+                          <Link to="/cart">Cart</Link>
                         </li>
                         <li>
                           <Link to="/" onClick={() => logOut()}>
@@ -82,7 +82,7 @@ function NavBar() {
                           <Link to="/signup">Sign Up</Link>
                         </li>
                         <li>
-                          <Link to="/user/cart">Cart</Link>
+                          <Link to="/cart">Cart</Link>
                         </li>
                       </div>
                     )}
@@ -101,13 +101,13 @@ function NavBar() {
                     <Link to="/">Home</Link>
                   </li>
                   <li class="mainNav">
-                    <Link to="/user/shop">Shop</Link>
+                    <Link to="/shop">Shop</Link>
                   </li>
                   <li class="mainNav">
-                    <Link to="/user/blog">Blog</Link>
+                    <Link to="/blog">Blog</Link>
                   </li>
                   <li class="mainNav">
-                    <Link to="/user/contactus">Contact Us</Link>
+                    <Link to="/contactus">Contact Us</Link>
                   </li>
                 </ul>
               </div>
@@ -120,13 +120,13 @@ function NavBar() {
 
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
-        <Route path="/user/shop" element={<Shop />}></Route>
-        <Route path="/user/blog" element={<Blog />}></Route>
-        <Route path="/user/contactus" element={<Contactus />}></Route>
+        <Route path="/shop" element={<Shop />}></Route>
+        <Route path="/blog" element={<Blog />}></Route>
+        <Route path="/contactus" element={<Contactus />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/user/cart" element={<Cart />}></Route>
-        <Route path="/user/display/:id" element={<Display />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/display/:id" element={<Display />}></Route>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/add-product" element={<AddProduct />}></Route>
         <Route path="/update-product" element={<UpdateProduct />}></Route>

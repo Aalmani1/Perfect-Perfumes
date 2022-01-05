@@ -84,7 +84,10 @@ function Cart() {
       });
   }
 
-  if (cartItems.length == 0) {
+  if (cartItems == undefined || cartItems.length == 0) {
+    {
+      console.log(cartItems);
+    }
     return (
       <div>
         <div className="container-empty">
@@ -106,121 +109,125 @@ function Cart() {
         <Footer />
       </div>
     );
-  }
-  return (
-    <div>
-      {(function () {
-        if (decodedData == undefined) {
-          return <h3>no cart register or login first</h3>;
-        } else {
-          return (
-            <div style={{ marginTop: "3%", textAlign: "center" }}>
-              <div className="container">
-                <div className="col1">
-                  <h6>Products</h6>
-                  <hr></hr>
-                </div>
-                <div className="col2">
-                  <h6>Price</h6>
-                  <hr></hr>
-                </div>
-
-                <div className="col3">
-                  <h6>Quantity</h6>
-                  <hr></hr>
-                </div>
-
-                <div className="col4">
-                  <h6>Total</h6>
-                  <hr></hr>
-                </div>
-              </div>
-              {cartItems.map((item) => {
-                return (
-                  <div>
-                    <div className="container-cart">
-                      <div className="cart-col1">
-                        <button
-                          style={{ marginRight: "9%" }}
-                          type="button"
-                          class="btn btn-danger"
-                          onClick={() => {
-                            deleteItem(item.items._id);
-                          }}
-                        >
-                          X
-                        </button>
-
-                        <img style={{ width: "10%" }} src={item.items.img} />
-                        <h6
-                          style={
-                            ({ textAlign: "center" }, { marginLeft: "13%" })
-                          }
-                        >
-                          {item.items.name}
-                        </h6>
-                      </div>
-                      <div className="cart-col2">
-                        <h6>{item.items.price}</h6>
-                      </div>
-
-                      <div className="cart-col3">
-                        <h6>{item.quantity}</h6>
-                      </div>
-
-                      <div className="cart-col4">
-                        <h6>{item.subtotal}</h6>
-                      </div>
-                    </div>
-                    <hr className="hr-cart"></hr>
+  } else {
+    {
+      console.log(cartItems);
+    }
+    return (
+      <div>
+        {(function () {
+          if (decodedData == undefined) {
+            return <h3>no cart register or login first</h3>;
+          } else {
+            return (
+              <div style={{ marginTop: "3%", textAlign: "center" }}>
+                <div className="container">
+                  <div className="col1">
+                    <h6>Products</h6>
+                    <hr></hr>
                   </div>
-                );
-              })}
+                  <div className="col2">
+                    <h6>Price</h6>
+                    <hr></hr>
+                  </div>
 
-              {
-                //copon form
-                // <div className="copon">
-                //   <form>
-                //     <label>
-                //       Copon:
-                //       <input type="text" name="copon" />
-                //     </label>
-                //     <input type="submit" value="Submit" />
-                //   </form>
-                // </div>
-              }
+                  <div className="col3">
+                    <h6>Quantity</h6>
+                    <hr></hr>
+                  </div>
 
-              <div className="total">
-                <div className="cartTotal">
-                  <h3>Total </h3>
-                  <h5> With out VAT 15% : {total}</h5>
-
-                  <h5 style={{ textAlign: "right" }}>
-                    With VAT 15% : {Math.floor(total * 1.15)}
-                  </h5>
+                  <div className="col4">
+                    <h6>Total</h6>
+                    <hr></hr>
+                  </div>
                 </div>
+                {cartItems.map((item) => {
+                  return (
+                    <div>
+                      <div className="container-cart">
+                        <div className="cart-col1">
+                          <button
+                            style={{ marginRight: "9%" }}
+                            type="button"
+                            class="btn btn-danger"
+                            onClick={() => {
+                              deleteItem(item.items._id);
+                            }}
+                          >
+                            X
+                          </button>
 
-                <div className="cheakout">
-                  <StripeCheckout
-                    stripeKey="pk_test_51KAtlhJHCqAHPYsNWex3D5EejBTK2ghLo1NsmSZS2bTcviOBXCnjVuNNrlm8DkL3o3aV7E7BfhsOFHTOeXvC3lg800V3rLmCic"
-                    token={checkout}
-                    billingAddress
-                    shippingAddress
-                    amount={Math.floor((total * 1.15) / 3.75) * 100}
-                    // name={cartItems}
-                  >
-                    <Button id="cheakout">Checkout</Button>
-                  </StripeCheckout>
+                          <img style={{ width: "10%" }} src={item.items.img} />
+                          <h6
+                            style={
+                              ({ textAlign: "center" }, { marginLeft: "13%" })
+                            }
+                          >
+                            {item.items.name}
+                          </h6>
+                        </div>
+                        <div className="cart-col2">
+                          <h6>{item.items.price}</h6>
+                        </div>
+
+                        <div className="cart-col3">
+                          <h6>{item.quantity}</h6>
+                        </div>
+
+                        <div className="cart-col4">
+                          <h6>{item.subtotal}</h6>
+                        </div>
+                      </div>
+                      <hr className="hr-cart"></hr>
+                    </div>
+                  );
+                })}
+
+                {
+                  //copon form
+                  // <div className="copon">
+                  //   <form>
+                  //     <label>
+                  //       Copon:
+                  //       <input type="text" name="copon" />
+                  //     </label>
+                  //     <input type="submit" value="Submit" />
+                  //   </form>
+                  // </div>
+                }
+
+                <div className="total">
+                  <div className="cartTotal">
+                    <h3>Total </h3>
+                    <h5> With out VAT 15% : {total}</h5>
+
+                    <h5 style={{ textAlign: "right" }}>
+                      With VAT 15% : {Math.floor(total * 1.15)}
+                    </h5>
+                  </div>
+
+                  <div className="cheakout">
+                    <StripeCheckout
+                      stripeKey="pk_test_51KAtlhJHCqAHPYsNWex3D5EejBTK2ghLo1NsmSZS2bTcviOBXCnjVuNNrlm8DkL3o3aV7E7BfhsOFHTOeXvC3lg800V3rLmCic"
+                      token={checkout}
+                      billingAddress
+                      shippingAddress
+                      amount={Math.floor((total * 1.15) / 3.75) * 100}
+                      // name={cartItems}
+                    >
+                      <Button id="cheakout">Checkout</Button>
+                    </StripeCheckout>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        }
-      })()}
+            );
+          }
+        })()}
 
-      <Footer />
-    </div>
-  );
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default Cart;
