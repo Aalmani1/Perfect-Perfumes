@@ -27,7 +27,7 @@ function Login() {
     }
 
     await axios
-      .post("http://localhost:3001/users/login", {
+      .post("/users/login", {
         email: email,
         password: password,
       })
@@ -45,13 +45,14 @@ function Login() {
         } else {
           localStorage.setItem("token", res.data.token);
           // localStorage.setItem("id", res.data.user);
+
           Swal.fire(
             "Successfully Login!",
             ` Welcome 💕`,
             //  ` Welcome ${decodedData.Fname} 💕`,
             "success"
           );
-          navigate("/");
+          navigate("/home");
         }
       });
   }

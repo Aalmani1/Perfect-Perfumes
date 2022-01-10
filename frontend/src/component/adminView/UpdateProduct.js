@@ -21,7 +21,7 @@ function UpdateProduct() {
   const [gender, setGender] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/products").then((res) => {
+    axios.get("/products").then((res) => {
       // console.log(res.data);
       setProduct(res.data);
     });
@@ -36,7 +36,7 @@ function UpdateProduct() {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:3001/products/${Id}/update`, {
+      .put(`/products/${Id}/update`, {
         id: Id,
         brand: brand,
         name: name,
@@ -57,7 +57,7 @@ function UpdateProduct() {
 
   return (
     <div>
-      {item == undefined ? (
+      {item != undefined ? (
         <div className="AdminAddItem">
           <h3 style={{ textAlign: "center" }}>Update Product</h3>
           <Form
@@ -73,6 +73,7 @@ function UpdateProduct() {
                 }}
                 type="text"
                 placeholder="Enter ID "
+                value={item}
               />
             </Form.Group>
 

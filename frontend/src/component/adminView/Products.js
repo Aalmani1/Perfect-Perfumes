@@ -28,10 +28,6 @@ function Products() {
     });
   }
 
-  function updateItem(_id) {
-    // Swal.fire("Updated Succsefully", "", "success");
-  }
-
   return (
     <div>
       <h3 style={{ textAlign: "center" }}>Product</h3>
@@ -47,14 +43,8 @@ function Products() {
                   <h5 class="card-title">{item.name}</h5>
                   <small class="text-muted">Price : {item.price}</small>
                 </div>
-
-                <Link to={"/update-product/" + item}>
-                  <Button
-                    onClick={() => updateItem(item._id)}
-                    variant="secondary"
-                  >
-                    Update
-                  </Button>
+                <Link to={"/update-product/" + item._id}>
+                  <Button variant="secondary">update</Button>
                 </Link>
                 <Button onClick={() => DeleteItem(item._id)} variant="danger">
                   Delete

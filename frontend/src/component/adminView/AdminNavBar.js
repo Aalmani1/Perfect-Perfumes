@@ -30,7 +30,7 @@ function AdminNavBar() {
     // localStorage.removeItem("id");
     localStorage.removeItem("token");
     Swal.fire("LogOut successfully!", "See you soon", "success");
-    navigate("/");
+    navigate("/home");
   }
 
   return (
@@ -49,14 +49,12 @@ function AdminNavBar() {
           style={{ backgroundColor: "rgb(223, 189, 204)" }}
         >
           <li class="mainNav" style={{ marginLeft: "15%" }}>
-            <Link to="/products">Products</Link>
+            <Link to="/">Products</Link>
           </li>
           <li class="mainNav">
             <Link to="/add-product">Add Product</Link>
           </li>
-          <li class="mainNav">
-            <Link to="/update-product">Update Product</Link>
-          </li>
+
           <li class="adminNav1">
             <Link to="/oreders">Oreders</Link>
           </li>
@@ -69,7 +67,7 @@ function AdminNavBar() {
           </li>
 
           <li style={{ backgroundColor: "#b30000" }}>
-            <Link to="/" onClick={() => logOut()}>
+            <Link to="/home" onClick={() => logOut()}>
               LogOut
             </Link>
           </li>
@@ -78,12 +76,15 @@ function AdminNavBar() {
 
       <Routes>
         <Route path="/" element={<Products />}></Route>
-        <Route path="/add-product" element={<AddProduct />}></Route>
-        <Route path="/update-product" element={<UpdateProduct />}></Route>
-        <Route path="/oreders" element={<Oreders />}></Route>
-        <Route path="/update-user" element={<UpdateUser />}></Route>
-        <Route path="/delete-user" element={<DeleteUser />}></Route>
-        <Route path="*" element={<ErrorPage />}></Route>
+        <Route path="/admin/add-product" element={<AddProduct />}></Route>
+        <Route
+          path="/admin/update-product/:item"
+          element={<UpdateProduct />}
+        ></Route>
+        <Route path="/admin/oreders" element={<Oreders />}></Route>
+        <Route path="/admin/update-user" element={<UpdateUser />}></Route>
+        <Route path="/admin/delete-user" element={<DeleteUser />}></Route>
+        <Route path="/admin/*" element={<ErrorPage />}></Route>
       </Routes>
     </div>
   );

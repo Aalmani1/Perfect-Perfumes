@@ -43,7 +43,7 @@ function NavBar() {
     // localStorage.removeItem("id");
     localStorage.removeItem("token");
     Swal.fire("LogOut successfully!", "See you soon 💕", "success");
-    navigate("/");
+    navigate("/home");
   }
   return (
     <div>
@@ -68,7 +68,7 @@ function NavBar() {
                           <Link to="/cart">Cart</Link>
                         </li>
                         <li>
-                          <Link to="/" onClick={() => logOut()}>
+                          <Link to="/home" onClick={() => logOut()}>
                             LogOut
                           </Link>
                         </li>
@@ -98,7 +98,7 @@ function NavBar() {
                 <br></br>
                 <ul class="navbar1">
                   <li class="mainNav1">
-                    <Link to="/">Home</Link>
+                    <Link to="/home">Home</Link>
                   </li>
                   <li class="mainNav">
                     <Link to="/shop">Shop</Link>
@@ -119,7 +119,7 @@ function NavBar() {
       })()}
 
       <Routes>
-        <Route exact path="/" element={<Home />}></Route>
+        <Route path="/home" element={<Home />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/blog" element={<Blog />}></Route>
         <Route path="/contactus" element={<Contactus />}></Route>
@@ -129,7 +129,7 @@ function NavBar() {
         <Route path="/display/:id" element={<Display />}></Route>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/add-product" element={<AddProduct />}></Route>
-        <Route path="/update-product" element={<UpdateProduct />}></Route>
+        <Route path="/update-product/:item" element={<UpdateProduct />}></Route>
         <Route path="/update-user" element={<UpdateUser />}></Route>
         <Route path="/delete-user" element={<DeleteUser />}></Route>
         <Route path="/oreders" element={<Oreders />}></Route>
