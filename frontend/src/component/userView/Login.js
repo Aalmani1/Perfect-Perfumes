@@ -15,16 +15,6 @@ function Login() {
     let password = e.target[1].value;
 
     let decodedData;
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      decodedData = jwt_decode(storedToken, { payload: true });
-      console.log(decodedData);
-      let expirationDate = decodedData.exp;
-      var current_time = Date.now() / 1000;
-      if (expirationDate < current_time) {
-        localStorage.removeItem("token");
-      }
-    }
 
     await axios
       .post("/users/login", {
@@ -45,6 +35,18 @@ function Login() {
         } else {
           localStorage.setItem("token", res.data.token);
           // localStorage.setItem("id", res.data.user);
+          // localStorage.getItem("token");
+
+          const storedToken = localStorage.getItem("token");
+          if (storedToken) {
+            decodedData = jwt_decode(storedToken, { payload: true });
+            console.log(decodedData);
+            let expirationDate = decodedData.exp;
+            var current_time = Date.now() / 1000;
+            if (expirationDate < current_time) {
+              localStorage.removeItem("token");
+            }
+          }
 
           Swal.fire(
             "Successfully Login!",
@@ -52,7 +54,11 @@ function Login() {
             //  ` Welcome ${decodedData.Fname} 💕`,
             "success"
           );
-          navigate("/home");
+          if (decodedData.userType == "admin") {
+            navigate("/");
+          } else {
+            navigate("/home");
+          }
         }
       });
   }

@@ -62,9 +62,6 @@ function AdminNavBar() {
           <li class="mainNav">
             <Link to="/update-user">Update User</Link>
           </li>
-          <li class="mainNav">
-            <Link to="/delete-user">Delete User</Link>
-          </li>
 
           <li style={{ backgroundColor: "#b30000" }}>
             <Link to="/home" onClick={() => logOut()}>
