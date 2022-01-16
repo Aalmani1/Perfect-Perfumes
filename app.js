@@ -25,7 +25,7 @@ mongoose.Promise = global.Promise;
 
 // db connection
 mongoose.connect(
-  "mongodb+srv://admin:12345@cluster0.lpoxw.mongodb.net/Perfect-Perfumes?retryWrites=true&w=majority"
+  "mongodb://admin:12345@cluster0-shard-00-00.lpoxw.mongodb.net:27017,cluster0-shard-00-01.lpoxw.mongodb.net:27017,cluster0-shard-00-02.lpoxw.mongodb.net:27017/Perfect-Perfumes?ssl=true&replicaSet=atlas-bpvnpi-shard-0&authSource=admin&retryWrites=true&w=majority"
 );
 
 mongoose.connection.on("connected", () => {

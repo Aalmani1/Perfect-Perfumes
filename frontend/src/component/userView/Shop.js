@@ -9,6 +9,7 @@ import jwt_decode from "jwt-decode";
 import "alertifyjs/build/css/alertify.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { Circles } from "react-loading-icons";
 
 const MySwal = withReactContent(Swal);
 const Toast = MySwal.mixin({
@@ -28,6 +29,7 @@ function Shop() {
   const [addItem, setAddItem] = useState([]);
   const [items, setItems] = useState([]);
   const [allItems, setAllItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   // const userId = localStorage.getItem("id");
 
   let decodedData;
@@ -42,12 +44,12 @@ function Shop() {
     }
   }
 
-  useEffect(() => {
-    console.log("product");
-    console.log(product);
+  // useEffect(() => {
+  //   console.log("product");
+  //   console.log(product);
 
-    // console.log("items from use efect ===>", items);
-  }, [product]);
+  //   // console.log("items from use efect ===>", items);
+  // }, [product]);
 
   useEffect(() => {
     axios.get("/products").then((res) => {

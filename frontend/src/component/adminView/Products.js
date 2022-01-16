@@ -44,9 +44,15 @@ function Products() {
                   <small class="text-muted">Price : {item.price}</small>
                 </div>
                 <Link to={"/update-product/" + item._id}>
-                  <Button variant="secondary">update</Button>
+                  <Button style={{ width: "100%" }} variant="secondary">
+                    update
+                  </Button>
                 </Link>
-                <Button onClick={() => DeleteItem(item._id)} variant="danger">
+                <Button
+                  style={{ width: "90%", marginLeft: "5%" }}
+                  onClick={() => DeleteItem(item._id)}
+                  variant="danger"
+                >
                   Delete
                 </Button>
               </div>
