@@ -248,7 +248,8 @@ tr {
 .cart-col2 {
   grid-column-start: 1;
   grid-column-end: 2;
-  /* margin-left: -610%; */
+  margin-left: -40%;
+  margin-left: -610%;
 }
 .cart-col3 {
   grid-column-start: 2;
