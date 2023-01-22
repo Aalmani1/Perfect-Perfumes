@@ -8,7 +8,7 @@ const Blog = () => {
     <div>
       <div>
         <div>
-          <img className="blogImg" src={img1} />
+          <img className="blogImg" src={img1} alt={"blogImg"}/>
         </div>
         <div className="error">
           <h2>Blog</h2>
