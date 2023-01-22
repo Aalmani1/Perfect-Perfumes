@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/Aalmani1/Perfect-Perfumes"
   },
+  "engines": {
+    "node": "12.x"
+},
   "author": "",
   "license": "ISC",
   "dependencies": {
